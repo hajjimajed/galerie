@@ -1,0 +1,56 @@
+<div [ngClass]="{'nav-menu-container': true, 'nav-menu-container-show': isActive}">
+    <div [ngClass]="{'menu-item1': true, 'menu-item-show': isActive}">
+        <a href="">
+            <h1>INSPIRING GREATNESS</h1>
+        </a>
+    </div>
+    <div [ngClass]="{'menu-item2': true, 'menu-item-show': isActive}">
+        <a href="">
+            <h1>MODELS</h1>
+        </a>
+    </div>
+    <div [ngClass]="{'menu-item3': true, 'menu-item-show': isActive}">
+        <a href="">
+            <h1>BESPOKE</h1>
+        </a>
+    </div>
+    <div [ngClass]="{'menu-item4': true, 'menu-item-show': isActive}">
+        <a href="">
+            <h1>OWNERSHIP</h1>
+        </a>
+    </div>
+    <div [ngClass]="{'menu-item5': true, 'menu-item-show': isActive}">
+        <a href="">
+            <h1>PROVENANCE</h1>
+        </a>
+    </div>
+</div>
+
+<div class="nav-container">
+    <div class="nav-bar">
+        <div class="nav-menu" (click)="onClickMenu()">
+            <div class="ham-button">
+                <div class="nav-ham">
+                    <div [ngClass]="{'first-bar': true, 'first-bar-active': isActive}">
+                        <div id="bars"></div>
+                        <div id="bars"></div>
+                    </div>
+                    <div [ngClass]="{'second-bar': true, 'second-bar-active': isActive}" id="bars"></div>
+                    <div [ngClass]="{'third-bar': true, 'third-bar-active': isActive}" id="bars"></div>
+                </div>
+            </div>
+            <div class="ham-text">
+                <h1 class="h1-text">menu</h1>
+            </div>
+        </div>
+        <div class="nav-logo">
+            <a href=""><img class="logo1" src="../../assets/imgs/imgs/new-logo.svg" alt=""> <img class="logo2"
+                    src="../../assets/imgs/imgs/new-logo.svg" alt=""></a>
+        </div>
+        <div class="nav-button">
+            <a class="nav-button-link" href=""><img class="nav-button-img" src="../../assets/imgs/imgs/cart.svg" alt="">
+                <h1 class="nav-button-text">SHOPPING</h1>
+            </a>
+        </div>
+    </div>
+</div>

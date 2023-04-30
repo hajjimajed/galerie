@@ -1,0 +1,262 @@
+.nav-container {
+    width: 100%;
+    height: 130px;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+    transition: all 0.3s ease-in-out;
+    z-index: 10;
+}
+
+.nav-shrink {
+    height: 60px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+}
+
+.nav-bar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px rgba(255, 255, 255, 0.3) solid;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-bar-change {
+    border-bottom: rgba(255, 255, 255, 0);
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    cursor: pointer;
+
+}
+
+.ham-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 1.2rem;
+    overflow: hidden;
+}
+
+.nav-ham:hover {
+    transition: 0.3s;
+}
+
+.first-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: right;
+}
+
+.first-bar div:first-child {
+    height: 0.1rem;
+    width: 0.6rem;
+    margin-right: 0.2rem;
+    background: #fff;
+}
+
+.first-bar div:last-child {
+    height: 0.1rem;
+    width: 0.3rem;
+    background: #fff;
+}
+
+.second-bar {
+    height: 0.1rem;
+    width: 1.1rem;
+    margin: 0.3rem 0;
+    background: #fff;
+    transition: opacity 0.3s ease-in-out;
+    transition-delay: 0.2s;
+}
+
+.third-bar {
+    height: 0.1rem;
+    width: 1.1rem;
+    margin: 0.3rem 0;
+    background: #fff;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: right;
+}
+
+
+.nav-menu:hover #bars {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.first-bar-active {
+    transform: rotate(-45deg);
+    transform-origin: right;
+}
+
+.second-bar-active {
+    opacity: 0;
+    transition-delay: 0s;
+}
+
+.third-bar-active {
+    transform: rotate(45deg);
+    transform-origin: right;
+}
+
+
+
+.ham-text-color {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.ham-text {
+    margin-left: 15px;
+    margin-bottom: 5px;
+    width: 2rem;
+}
+
+.h1-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.nav-logo {
+    position: relative;
+    height: 45px;
+}
+
+.nav-logo img {
+    position: absolute;
+}
+
+.logo1 {
+    height: 55px;
+    width: auto;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.logo2 {
+    height: 35px;
+    width: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+.nav-button-link {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-button-img {
+    width: 20px;
+    height: auto;
+    filter: invert(100%) sepia(1%) saturate(2%) hue-rotate(358deg) brightness(103%) contrast(101%);
+    transition: 0.3s;
+}
+
+.nav-button-text {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-left: 0.5rem;
+    transition: 0.3s;
+}
+
+.nav-text-color {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-img-color {
+    opacity: 0.7;
+}
+
+
+
+
+
+
+.nav-menu-container {
+    position: absolute;
+    height: 100vh;
+    width: 40vw;
+    left: -40vw;
+    top: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+    transition: 0.6s cubic-bezier(0.61, 1, 0.88, 1);
+    transition-delay: 0.7s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 9;
+}
+
+.nav-menu-container-show {
+    transform: translateX(40vw);
+    transition-delay: 0s;
+}
+
+.menu-item1,
+.menu-item2,
+.menu-item3,
+.menu-item4,
+.menu-item5 {
+    margin-right: 100px;
+    transform: translateX(-35vw);
+    opacity: 0;
+    transition: 0.8s all cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+.menu-item2 {
+    transition-delay: 0.2s;
+}
+
+.menu-item3 {
+    transition-delay: 0.4s;
+}
+
+.menu-item4 {
+    transition-delay: 0.6s;
+}
+
+.menu-item5 {
+    transition-delay: 0.8s;
+}
+
+.menu-item-show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.nav-menu-container h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all ease-in-out 0.2s;
+}
+
+.nav-menu-container h1:hover {
+    color: rgba(255, 255, 255, 1);
+}
