@@ -1,0 +1,23 @@
+.profile {
+    text-align: center;
+    padding: 20px;
+    margin-top: 200px;
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+}

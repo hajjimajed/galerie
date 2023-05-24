@@ -1,7 +1,7 @@
-<br><br><br><br><br><br><br><br><br><br>
-<form (submit)="getUserData()">
-    <button type="submit">submit</button>
-</form>
-
-<h1>{{userName}}</h1>
-<img [src]="userProfileImg" alt="">
+<div class="profile">
+    <img [src]="'http://localhost:8080/' + userData.profileImg" alt="Profile Image" class="profile-image">
+    <h2>{{ userData.name }}</h2>
+    <p>Email: {{ userData.email }}</p>
+    <p>Role: {{ userData.role }}</p>
+    <!-- Add more fields as needed -->
+</div>

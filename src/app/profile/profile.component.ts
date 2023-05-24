@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -12,21 +12,19 @@ interface UserDataResponse {
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
   userData: any;
-  userId: string | undefined;
-  userEmail: string | undefined;
-  userPassword: string | undefined;
-  userName: string | undefined;
-  userProfileImg: string | undefined;
-
 
   constructor(
     private authService: AuthService,
     private http: HttpClient
   ) {
 
+  }
+
+  ngOnInit() {
+    this.getUserData();
   }
 
   getUserData() {
@@ -38,21 +36,7 @@ export class ProfileComponent {
     this.http.get<UserDataResponse>('http://localhost:8080/auth/user-data', { headers })
       .subscribe(
         (response) => {
-          const { _id, email, password, name, profileImg, ...otherFields } = response.user;
-
-          this.userId = _id;
-          this.userEmail = email;
-          this.userPassword = password;
-          this.userName = name;
-          this.userProfileImg = `http://localhost:8080/${profileImg}`;
-
-          console.log('userId:', this.userId);
-          console.log('userEmail:', this.userEmail);
-          console.log('userPassword:', this.userPassword);
-          console.log('userName:', this.userName);
-          console.log('userProfileImg:', this.userProfileImg);
-          console.log('other fields:', otherFields);
-
+          console.log('user data : ', response);
           this.userData = response.user;
         },
         (error) => {
@@ -61,6 +45,7 @@ export class ProfileComponent {
       )
 
   }
+
 
 
 }
