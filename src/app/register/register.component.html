@@ -9,8 +9,8 @@
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" [(ngModel)]="name" required>
 
-    <label for="profileImg">Profile Image:</label>
-    <input type="text" id="profileImg" name="profileImg" [(ngModel)]="profileImg" required>
+    <label for="image">Profile Image:</label>
+    <input type="file" id="image" name="image" (change)="onFileSelected($event)">
 
     <label for="role">Role:</label>
     <select id="role" name="role" [(ngModel)]="role" required>

@@ -15,6 +15,12 @@ interface UserDataResponse {
 export class ProfileComponent {
 
   userData: any;
+  userId: string | undefined;
+  userEmail: string | undefined;
+  userPassword: string | undefined;
+  userName: string | undefined;
+  userProfileImg: string | undefined;
+
 
   constructor(
     private authService: AuthService,
@@ -32,7 +38,21 @@ export class ProfileComponent {
     this.http.get<UserDataResponse>('http://localhost:8080/auth/user-data', { headers })
       .subscribe(
         (response) => {
-          console.log('user data : ', response);
+          const { _id, email, password, name, profileImg, ...otherFields } = response.user;
+
+          this.userId = _id;
+          this.userEmail = email;
+          this.userPassword = password;
+          this.userName = name;
+          this.userProfileImg = `http://localhost:8080/${profileImg}`;
+
+          console.log('userId:', this.userId);
+          console.log('userEmail:', this.userEmail);
+          console.log('userPassword:', this.userPassword);
+          console.log('userName:', this.userName);
+          console.log('userProfileImg:', this.userProfileImg);
+          console.log('other fields:', otherFields);
+
           this.userData = response.user;
         },
         (error) => {
@@ -41,5 +61,6 @@ export class ProfileComponent {
       )
 
   }
+
 
 }

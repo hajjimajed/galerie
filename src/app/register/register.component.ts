@@ -12,7 +12,7 @@ export class RegisterComponent {
   email: string;
   password: string;
   name: string;
-  profileImg: String;
+  profileImg: File | null;
   role: string;
 
   constructor(
@@ -21,19 +21,24 @@ export class RegisterComponent {
     this.email = '';
     this.password = '';
     this.name = '';
-    this.profileImg = '';
+    this.profileImg = null;
     this.role = '';
+  }
+
+  onFileSelected(event: any) {
+    this.profileImg = event.target.files[0];
   }
 
 
   submitForm() {
-    const formData = {
-      email: this.email,
-      password: this.password,
-      name: this.name,
-      profileImg: this.profileImg,
-      role: this.role
-    };
+    const formData = new FormData();
+    formData.append('email', this.email);
+    formData.append('password', this.password);
+    formData.append('name', this.name);
+    if (this.profileImg) {
+      formData.append('image', this.profileImg);
+    }
+    formData.append('role', this.role);
 
     this.http.put('http://localhost:8080/auth/signup', formData)
       .subscribe(

@@ -48,10 +48,21 @@
                     src="../../assets/imgs/imgs/new-logo.svg" alt=""></a>
         </div>
         <div class="nav-button">
-            <a class="nav-button-link" routerLink="/register"><img class="nav-button-img"
-                    src="../../assets/imgs/imgs/cart.svg" alt="">
-                <h1 class="nav-button-text">Register</h1>
-            </a>
+            <ng-container *ngIf="isAuth(); else registerButton">
+                <!-- Show Logout button if authenticated -->
+                <a class="nav-button-link" (click)="logout()">
+                    <img class="nav-button-img" src="../../assets/imgs/imgs/logout.svg" alt="">
+                    <h1 class="nav-button-text">Logout</h1>
+                </a>
+            </ng-container>
+            <ng-template #registerButton>
+                <!-- Show Register button if not authenticated -->
+                <a class="nav-button-link" routerLink="/register">
+                    <img class="nav-button-img" src="../../assets/imgs/imgs/cart.svg" alt="">
+                    <h1 class="nav-button-text">Register</h1>
+                </a>
+            </ng-template>
         </div>
+
     </div>
 </div>

@@ -4,25 +4,34 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private token: string | null = null;
-  private userId: string | null = null;
+  private tokenKey = 'auth_token';
+  private userIdKey = 'user_id';
 
   constructor() { }
 
   setToken(token: string): void {
-    this.token = token;
+    localStorage.setItem(this.tokenKey, token);
   }
 
   getToken(): string | null {
-    return this.token;
+    return localStorage.getItem(this.tokenKey);
   }
 
   setUserId(userId: string): void {
-    this.userId = userId;
+    localStorage.setItem(this.userIdKey, userId);
   }
 
   getUserId(): string | null {
-    return this.userId;
+    return localStorage.getItem(this.userIdKey);
   }
 
+  clearTokenAndUserId(): void {
+    localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem(this.userIdKey);
+  }
+
+  logout(): void {
+    this.clearTokenAndUserId();
+    // You can also perform any additional logout-related actions here, such as redirecting the user to the login page.
+  }
 }
