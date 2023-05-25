@@ -23,6 +23,10 @@ export class NavigationComponent {
     this.isActive = !this.isActive;
   }
 
+  hideNavMenuContainer() {
+    this.isActive = false; // Assuming `isActive` is a boolean property controlling the visibility of `nav-menu-container`
+  }
+
   logout(): void {
     this.authService.logout();
   }

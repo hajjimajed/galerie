@@ -222,7 +222,8 @@
 .menu-item2,
 .menu-item3,
 .menu-item4,
-.menu-item5 {
+.menu-item5,
+.menu-item6 {
     margin-right: 100px;
     transform: translateX(-35vw);
     opacity: 0;
@@ -243,6 +244,10 @@
 
 .menu-item5 {
     transition-delay: 0.8s;
+}
+
+.menu-item6 {
+    transition-delay: 1s;
 }
 
 .menu-item-show {

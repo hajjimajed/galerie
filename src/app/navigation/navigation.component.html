@@ -1,29 +1,63 @@
 <div [ngClass]="{'nav-menu-container': true, 'nav-menu-container-show': isActive}">
-    <div [ngClass]="{'menu-item1': true, 'menu-item-show': isActive}">
-        <a routerLink="/login">
-            <h1>Login</h1>
-        </a>
-    </div>
-    <div [ngClass]="{'menu-item2': true, 'menu-item-show': isActive}">
-        <a routerLink="/profile">
-            <h1>Profile</h1>
-        </a>
-    </div>
-    <div [ngClass]="{'menu-item3': true, 'menu-item-show': isActive}">
-        <a href="">
-            <h1>BESPOKE</h1>
-        </a>
-    </div>
-    <div [ngClass]="{'menu-item4': true, 'menu-item-show': isActive}">
-        <a href="">
-            <h1>OWNERSHIP</h1>
-        </a>
-    </div>
-    <div [ngClass]="{'menu-item5': true, 'menu-item-show': isActive}">
-        <a href="">
-            <h1>PROVENANCE</h1>
-        </a>
-    </div>
+    <ng-container *ngIf="isAuth(); else notConnected">
+        <div [ngClass]="{'menu-item1': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
+            <a routerLink="/profile">
+                <h1>Profile</h1>
+            </a>
+        </div>
+        <div [ngClass]="{'menu-item2': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
+            <a routerLink="/my-posts">
+                <h1>My Posts</h1>
+            </a>
+        </div>
+        <div [ngClass]="{'menu-item3': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
+            <a routerLink="/new-post">
+                <h1>New Post</h1>
+            </a>
+        </div>
+        <div [ngClass]="{'menu-item4': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
+            <a routerLink="/gallery">
+                <h1>Gallery</h1>
+            </a>
+        </div>
+        <div [ngClass]="{'menu-item5': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
+            <a routerLink="/about">
+                <h1>About Us</h1>
+            </a>
+        </div>
+        <div [ngClass]="{'menu-item6': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
+            <a routerLink="/contact">
+                <h1>Contact Us</h1>
+            </a>
+        </div>
+    </ng-container>
+    <ng-template #notConnected>
+        <div [ngClass]="{'menu-item1': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
+            <a routerLink="/login">
+                <h1>Login</h1>
+            </a>
+        </div>
+        <div [ngClass]="{'menu-item2': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
+            <a routerLink="/register">
+                <h1>Register</h1>
+            </a>
+        </div>
+        <div [ngClass]="{'menu-item3': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
+            <a routerLink="/gallery">
+                <h1>Gallery</h1>
+            </a>
+        </div>
+        <div [ngClass]="{'menu-item4': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
+            <a routerLink="/about">
+                <h1>About Us</h1>
+            </a>
+        </div>
+        <div [ngClass]="{'menu-item5': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
+            <a routerLink="/contact">
+                <h1>Contact Us</h1>
+            </a>
+        </div>
+    </ng-template>
 </div>
 
 <div class="nav-container">
@@ -43,8 +77,8 @@
                 <h1 class="h1-text">menu</h1>
             </div>
         </div>
-        <div class="nav-logo">
-            <a href=""><img class="logo1" src="../../assets/imgs/imgs/new-logo.svg" alt=""> <img class="logo2"
+        <div class="nav-logo" (click)="hideNavMenuContainer()">
+            <a routerLink="/"><img class="logo1" src="../../assets/imgs/imgs/new-logo.svg" alt=""> <img class="logo2"
                     src="../../assets/imgs/imgs/new-logo.svg" alt=""></a>
         </div>
         <div class="nav-button">
