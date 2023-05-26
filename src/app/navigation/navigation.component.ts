@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-navigation',
@@ -8,8 +9,12 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class NavigationComponent {
 
+  searchQuery: string = ''; // Initialize with an empty string
+  searchResults: any[] = []; // Initialize as an empty array
+
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private http: HttpClient
   ) { }
 
   isActive: boolean = false;
@@ -31,4 +36,20 @@ export class NavigationComponent {
     this.authService.logout();
   }
 
+
+  searchPosts() {
+    if (this.searchQuery) {
+      const url = `http://localhost:8080/post/search-posts?q=${encodeURIComponent(this.searchQuery)}`;
+
+      this.http.get(url)
+        .subscribe((response: any) => {
+          this.searchResults = response.posts;
+        }, (error) => {
+          console.error('Error occurred during search:', error);
+          this.searchResults = [];
+        });
+    } else {
+      this.searchResults = [];
+    }
+  }
 }

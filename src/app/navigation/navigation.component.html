@@ -77,6 +77,21 @@
                 <h1 class="h1-text">menu</h1>
             </div>
         </div>
+        <div>
+            <div>
+                <input type="text" [(ngModel)]="searchQuery" (input)="searchPosts()" placeholder="Search posts">
+            </div>
+
+            <ng-container *ngIf="searchResults && searchResults.length > 0">
+                <ul>
+                    <li *ngFor="let result of searchResults">
+                        <!-- Display the result properties as needed -->
+                        {{ result.title }}
+                    </li>
+                </ul>
+            </ng-container>
+
+        </div>
         <div class="nav-logo" (click)="hideNavMenuContainer()">
             <a routerLink="/"><img class="logo1" src="../../assets/imgs/imgs/new-logo.svg" alt=""> <img class="logo2"
                     src="../../assets/imgs/imgs/new-logo.svg" alt=""></a>
