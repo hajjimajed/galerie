@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../services/auth/auth.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-my-posts',
@@ -13,7 +14,8 @@ export class MyPostsComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,6 +35,30 @@ export class MyPostsComponent implements OnInit {
           console.error('error while retrieving my posts', error);
         }
       )
+  }
+
+  deletePost(postId: string) {
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+    this.http.delete(`http://localhost:8080/post/posts/${postId}`, { headers })
+      .subscribe(
+        (response: any) => {
+          console.log('post deleted');
+          this.myPosts = this.myPosts.filter(post => post._id !== postId);
+        },
+        (error) => {
+          console.error('error while deleting post', error);
+        }
+      )
+  }
+
+  postDetails(postId: string) {
+    this.router.navigate([`/post/${postId}`]);
+  }
+
+  postUpdate(postId: string) {
+    this.router.navigate([`/update-post/${postId}`]);
   }
 
 }

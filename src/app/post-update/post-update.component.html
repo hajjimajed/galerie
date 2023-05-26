@@ -1,0 +1,16 @@
+<br><br><br><br><br><br><br><br><br><br>
+<form (submit)="onSubmit()">
+    <label for="title">Title:</label>
+    <input type="text" id="name" [(ngModel)]="post.title" name="title">
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" [(ngModel)]="post.description" name="description">
+
+    <label for="category">Category:</label>
+    <input type="text" id="category" [(ngModel)]="post.category" name="category">
+
+    <label for="image">Image:</label>
+    <input type="file" id="image" (change)="onFileSelected($event)" name="image">
+
+    <button type="submit">Update</button>
+</form>

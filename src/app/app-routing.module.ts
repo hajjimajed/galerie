@@ -6,6 +6,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
+import { PostUpdateComponent } from './post-update/post-update.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -13,7 +15,9 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'new-post', component: NewPostComponent },
   { path: 'gallery', component: GalleryComponent },
-  { path: 'my-posts', component: MyPostsComponent }
+  { path: 'my-posts', component: MyPostsComponent },
+  { path: 'post/:id', component: PostDetailsComponent },
+  { path: 'update-post/:id', component: PostUpdateComponent }
 ];
 
 @NgModule({

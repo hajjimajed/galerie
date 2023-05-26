@@ -4,4 +4,9 @@
     <h3>{{myPost.category}}</h3>
     <img [src]="'http://localhost:8080/' + myPost.imageUrl" alt="My Post Image">
     <h4>{{myPost.date}}</h4>
+    <div>
+        <button (click)="deletePost(myPost._id)">delete</button>
+        <button (click)="postDetails(myPost._id)">details</button>
+        <button (click)="postUpdate(myPost._id)">update</button>
+    </div>
 </div>
