@@ -1,21 +1,24 @@
 <div class="profile">
-    <img [src]="'http://localhost:8080/' + userData.profileImg" alt="Profile Image" class="profile-image">
-    <h2>{{ userData.name }}</h2>
-    <p>Email: {{ userData.email }}</p>
-    <p>Role: {{ userData.role }}</p>
-    <!-- Add more fields as needed -->
+    <ng-container *ngIf="userData">
+        <img *ngIf="userData.profileImg" [src]="'http://localhost:8080/' + userData.profileImg" alt="Profile Image"
+            class="profile-image">
+        <h2>{{ userData.name }}</h2>
+        <p>Email: {{ userData.email }}</p>
+        <p>Role: {{ userData.role }}</p>
+        <!-- Add more fields as needed -->
 
 
-    <form (submit)="updateUserData()">
-        <label for="name">Name:</label>
-        <input type="text" id="name" [(ngModel)]="userData.name" name="name">
+        <form (submit)="updateUserData()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" [(ngModel)]="userData.name" name="name">
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" [(ngModel)]="userData.email" name="email">
+            <label for="email">Email:</label>
+            <input type="email" id="email" [(ngModel)]="userData.email" name="email">
 
-        <label for="profileImg">Profile Image:</label>
-        <input type="file" id="profileImg" (change)="onProfileImageChange($event)" name="profileImg">
+            <label for="profileImg">Profile Image:</label>
+            <input type="file" id="profileImg" (change)="onProfileImageChange($event)" name="profileImg">
 
-        <button type="submit">Update</button>
-    </form>
+            <button type="submit">Update</button>
+        </form>
+    </ng-container>
 </div>

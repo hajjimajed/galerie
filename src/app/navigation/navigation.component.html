@@ -85,8 +85,7 @@
             <ng-container *ngIf="searchResults && searchResults.length > 0">
                 <ul>
                     <li *ngFor="let result of searchResults">
-                        <!-- Display the result properties as needed -->
-                        {{ result.title }}
+                        <a [routerLink]="['/post/', result._id]">{{ result.title }}</a>
                     </li>
                 </ul>
             </ng-container>

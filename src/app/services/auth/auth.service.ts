@@ -30,6 +30,12 @@ export class AuthService {
     localStorage.removeItem(this.userIdKey);
   }
 
+  isLoggedIn(): boolean {
+    const token = this.getToken();
+    const userId = this.getUserId();
+    return token !== null && userId !== null;
+  }
+
   logout(): void {
     this.clearTokenAndUserId();
     // You can also perform any additional logout-related actions here, such as redirecting the user to the login page.

@@ -14,6 +14,8 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostUpdateComponent } from './post-update/post-update.component';
+import { AuthService } from './services/auth/auth.service';
+import { AuthGuard } from './guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { PostUpdateComponent } from './post-update/post-update.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

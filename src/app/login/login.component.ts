@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth/auth.service';
+import { Router } from '@angular/router'
 
 interface LoginResponse {
   token: string;
@@ -19,7 +20,8 @@ export class LoginComponent {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.email = '';
     this.password = '';
@@ -39,6 +41,7 @@ export class LoginComponent {
           const userId = response.userId;
           this.authService.setToken(token);
           this.authService.setUserId(userId);
+          this.router.navigate(['/gallery']);
         },
         (error) => {
           console.log('Error occured', error)

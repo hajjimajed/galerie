@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from '../services/auth/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-post-details',
@@ -15,20 +16,16 @@ export class PostDetailsComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.postId = this.route.snapshot.paramMap.get('id');
-    this.getPost();
-  }
-
-  getPost() {
-    const token = this.authService.getToken();
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-
-    this.http.get(`http://localhost:8080/post/posts/${this.postId}`, { headers })
+    this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+        this.postId = params.get('id');
+        return this.getPost();
+      })
+    )
       .subscribe(
         (response: any) => {
           this.post = response.post;
@@ -38,6 +35,10 @@ export class PostDetailsComponent implements OnInit {
           console.error('error while retrieving post', error);
         }
       )
+  }
+
+  getPost() {
+    return this.http.get(`http://localhost:8080/post/posts/${this.postId}`)
   }
 
 }
