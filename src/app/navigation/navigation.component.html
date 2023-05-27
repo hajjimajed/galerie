@@ -1,4 +1,20 @@
 <div [ngClass]="{'nav-menu-container': true, 'nav-menu-container-show': isActive}">
+    <div class="search-box">
+        <div class="search__container">
+            <input class="search__input" type="text" [(ngModel)]="searchQuery" (input)="searchPosts()"
+                placeholder="Search posts">
+        </div>
+        <ng-container *ngIf="searchResults && searchResults.length > 0">
+            <div class="search-results">
+                <ul>
+                    <li *ngFor="let result of searchResults">
+                        <a [routerLink]="['/post/', result._id]" (click)="hideNavMenuContainer()">{{ result.title }}</a>
+                    </li>
+                </ul>
+            </div>
+        </ng-container>
+    </div>
+
     <ng-container *ngIf="isAuth(); else notConnected">
         <div [ngClass]="{'menu-item1': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
             <a routerLink="/profile">
@@ -74,22 +90,8 @@
                 </div>
             </div>
             <div class="ham-text">
-                <h1 class="h1-text">menu</h1>
+                <h1 class="h1-text">Menu</h1>
             </div>
-        </div>
-        <div>
-            <div>
-                <input type="text" [(ngModel)]="searchQuery" (input)="searchPosts()" placeholder="Search posts">
-            </div>
-
-            <ng-container *ngIf="searchResults && searchResults.length > 0">
-                <ul>
-                    <li *ngFor="let result of searchResults">
-                        <a [routerLink]="['/post/', result._id]">{{ result.title }}</a>
-                    </li>
-                </ul>
-            </ng-container>
-
         </div>
         <div class="nav-logo" (click)="hideNavMenuContainer()">
             <a routerLink="/"><img class="logo1" src="../../assets/imgs/imgs/new-logo.svg" alt=""> <img class="logo2"
