@@ -1,0 +1,128 @@
+.login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.login-form {
+    margin-top: -50px;
+    padding: 30px;
+    position: relative;
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #ffffff23;
+    backdrop-filter: blur(10px);
+
+    h1 {
+        font-size: 18px;
+        font-weight: 400;
+        margin-top: 30px;
+
+        a {
+            color: #a2d2ff;
+        }
+    }
+}
+
+.login-form label {
+    display: block;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+input {
+    /* Reset box-sizing to default */
+    box-sizing: content-box;
+
+    /* Reset padding and border */
+    padding: 0;
+    border: none;
+
+    /* Reset font styles */
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+
+    /* Reset background and text colors */
+    background-color: transparent;
+    color: inherit;
+
+    /* Reset outline */
+    outline: none;
+
+    /* Reset other properties */
+    /* ... add any other properties you want to reset ... */
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 12px 0;
+    margin-bottom: 30px;
+    background-color: transparent;
+    transition: transform 250ms ease-in-out;
+    font-size: 14px;
+    line-height: 18px;
+    color: #ffffff;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.login-form input[type="email"]::placeholder,
+.login-form input[type="password"]::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: capitalize;
+    letter-spacing: 1.5px;
+}
+
+.login-form input[type="email"]:hover,
+.login-form input[type="password"]:hover {
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
+}
+
+.login-form input[type="email"]:focus,
+.login-form input[type="password"]:focus {
+    padding: 12px 0;
+    outline: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
+    border-radius: 0;
+    background-position: 100% center;
+}
+
+.login-form button[type="submit"] {
+    display: block;
+    margin-top: 10px;
+    padding: 12px 24px;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+}
+
+.login-form button[type="submit"]:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 1);
+}
+
+.login-form button[type="submit"]:focus {
+    outline: 0;
+}
+
+/* Additional styles */
+.login-form .error-message {
+    color: red;
+    margin-top: 5px;
+}

@@ -1,22 +1,25 @@
 <br><br><br><br><br><br><br><br><br><br>
-<form (ngSubmit)="submitForm()">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" [(ngModel)]="email" required>
+<div class="register-container">
+    <form class="register-form" (ngSubmit)="submitForm()">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" required>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" [(ngModel)]="password" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password" required>
 
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" [(ngModel)]="name" required>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="name" required>
 
-    <label for="image">Profile Image:</label>
-    <input type="file" id="image" name="image" (change)="onFileSelected($event)">
+        <label for="image">Profile Image:</label>
+        <input type="file" id="image" name="image" (change)="onFileSelected($event)">
 
-    <label for="role">Role:</label>
-    <select id="role" name="role" [(ngModel)]="role" required>
-        <option value="admin">Admin</option>
-        <option value="user">User</option>
-    </select>
+        <label for="role">Role:</label>
+        <select id="role" name="role" [(ngModel)]="role" required>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+        </select>
+        <button type="submit">Register</button>
 
-    <button type="submit">Register</button>
-</form>
+        <h1>A member ? <a routerLink="/login">Login</a></h1>
+    </form>
+</div>
