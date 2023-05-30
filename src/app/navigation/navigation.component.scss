@@ -234,6 +234,7 @@
 .menu-item5,
 .menu-item6 {
     margin-right: 100px;
+    margin-bottom: 30px;
     transform: translateX(-35vw);
     opacity: 0;
     transition: 0.8s all cubic-bezier(0.61, 1, 0.88, 1);
@@ -288,6 +289,7 @@
     margin-right: 30px;
     position: relative;
     margin-top: 140px;
+    margin-bottom: 30px;
 }
 
 .search-box .search__input {
