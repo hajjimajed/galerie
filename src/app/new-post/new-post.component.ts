@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../services/auth/auth.service';
 import { Router } from '@angular/router'
+
+interface UserDataResponse {
+  message: string;
+  user: any;
+}
 
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
   styleUrls: ['./new-post.component.scss']
 })
-export class NewPostComponent {
+export class NewPostComponent implements OnInit {
 
   title: string;
   description: string;
   category: string;
   image: File | null;
+
+  userData: any;
 
   constructor(
     private http: HttpClient,
@@ -24,6 +31,27 @@ export class NewPostComponent {
     this.description = '';
     this.category = '';
     this.image = null;
+  }
+
+  ngOnInit() {
+    this.getUserData();
+  }
+
+  getUserData() {
+    const token = this.authService.getToken();
+
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+    this.http.get<UserDataResponse>('http://localhost:8080/auth/user-data', { headers })
+      .subscribe(
+        (response) => {
+          console.log('user data : ', response);
+          this.userData = response.user;
+        },
+        (error) => {
+          console.log('error retrieving user data: ', error);
+        }
+      )
   }
 
   onSubmit() {
