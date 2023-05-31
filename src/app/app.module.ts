@@ -16,7 +16,6 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostUpdateComponent } from './post-update/post-update.component';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuard } from './guard/auth.guard';
-import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { HomeComponent } from './home/home.component';
     MyPostsComponent,
     PostDetailsComponent,
     PostUpdateComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,

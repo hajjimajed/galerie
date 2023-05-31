@@ -41,7 +41,7 @@ export class LoginComponent {
           const userId = response.userId;
           this.authService.setToken(token);
           this.authService.setUserId(userId);
-          this.router.navigate(['/gallery']);
+          this.router.navigate(['/']);
         },
         (error) => {
           console.log('Error occured', error)

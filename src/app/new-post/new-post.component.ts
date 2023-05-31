@@ -71,7 +71,7 @@ export class NewPostComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log('post created successfully');
-          this.router.navigate(['/gallery']);
+          this.router.navigate(['/']);
         },
         (error) => {
           console.error('error while creating post', error);

@@ -1,118 +1,158 @@
-<div [ngClass]="{'nav-menu-container': true, 'nav-menu-container-show': isActive}">
-    <div class="search-box">
-        <div class="search__container">
-            <input class="search__input" type="text" [(ngModel)]="searchQuery" (input)="searchPosts()"
-                placeholder="Search posts">
+<div class="navigation-bar">
+    <div class="top-section">
+        <div class="nav-logo">
+            <h1>website</h1>
         </div>
-        <ng-container *ngIf="searchResults && searchResults.length > 0">
-            <div class="search-results">
-                <ul>
-                    <li *ngFor="let result of searchResults">
-                        <a [routerLink]="['/post/', result._id]" (click)="hideNavMenuContainer()">{{ result.title }}</a>
-                    </li>
-                </ul>
-            </div>
+        <ng-container *ngIf="isAuth(); else notConnected" class="nav-menu">
+            <a routerLink="/" routerLinkActive="active-menu-item" class="nav-menu-item">
+                <div></div>
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M21.5 10.9V4.1C21.5 2.6 20.86 2 19.27 2H15.23C13.64 2 13 2.6 13 4.1V10.9C13 12.4 13.64 13 15.23 13H19.27C20.86 13 21.5 12.4 21.5 10.9Z"
+                        fill="#292D32" />
+                    <path
+                        d="M11 13.1V19.9C11 21.4 10.36 22 8.77 22H4.73C3.14 22 2.5 21.4 2.5 19.9V13.1C2.5 11.6 3.14 11 4.73 11H8.77C10.36 11 11 11.6 11 13.1Z"
+                        fill="#292D32" />
+                    <path
+                        d="M21.5 19.9V17.1C21.5 15.6 20.86 15 19.27 15H15.23C13.64 15 13 15.6 13 17.1V19.9C13 21.4 13.64 22 15.23 22H19.27C20.86 22 21.5 21.4 21.5 19.9Z"
+                        fill="#292D32" />
+                    <path
+                        d="M11 6.9V4.1C11 2.6 10.36 2 8.77 2H4.73C3.14 2 2.5 2.6 2.5 4.1V6.9C2.5 8.4 3.14 9 4.73 9H8.77C10.36 9 11 8.4 11 6.9Z"
+                        fill="#292D32" />
+                </svg>
+                <h2>gallery</h2>
+            </a>
+            <a routerLink="/profile" routerLinkActive="active-menu-item" class="nav-menu-item">
+                <div></div>
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 2C9.38 2 7.25 4.13 7.25 6.75C7.25 9.32 9.26 11.4 11.88 11.49C11.96 11.48 12.04 11.48 12.1 11.49C12.12 11.49 12.13 11.49 12.15 11.49C12.16 11.49 12.16 11.49 12.17 11.49C14.73 11.4 16.74 9.32 16.75 6.75C16.75 4.13 14.62 2 12 2Z"
+                        fill="#292D32" />
+                    <path
+                        d="M17.0809 14.1489C14.2909 12.2889 9.74094 12.2889 6.93094 14.1489C5.66094 14.9989 4.96094 16.1489 4.96094 17.3789C4.96094 18.6089 5.66094 19.7489 6.92094 20.5889C8.32094 21.5289 10.1609 21.9989 12.0009 21.9989C13.8409 21.9989 15.6809 21.5289 17.0809 20.5889C18.3409 19.7389 19.0409 18.5989 19.0409 17.3589C19.0309 16.1289 18.3409 14.9889 17.0809 14.1489Z"
+                        fill="#292D32" />
+                </svg>
+                <h2>profile</h2>
+            </a>
+            <a routerLink="/my-posts" routerLinkActive="active-menu-item" class="nav-menu-item">
+                <div></div>
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M19.3697 4.89109L13.5097 2.28109C12.6497 1.90109 11.3497 1.90109 10.4897 2.28109L4.62969 4.89109C3.14969 5.55109 2.92969 6.45109 2.92969 6.93109C2.92969 7.41109 3.14969 8.31109 4.62969 8.97109L10.4897 11.5811C10.9197 11.7711 11.4597 11.8711 11.9997 11.8711C12.5397 11.8711 13.0797 11.7711 13.5097 11.5811L19.3697 8.97109C20.8497 8.31109 21.0697 7.41109 21.0697 6.93109C21.0697 6.45109 20.8597 5.55109 19.3697 4.89109Z"
+                        fill="#292D32" />
+                    <path
+                        d="M12.0003 17.04C11.6203 17.04 11.2403 16.96 10.8903 16.81L4.15031 13.81C3.12031 13.35 2.32031 12.12 2.32031 10.99C2.32031 10.58 2.65031 10.25 3.06031 10.25C3.47031 10.25 3.80031 10.58 3.80031 10.99C3.80031 11.53 4.25031 12.23 4.75031 12.45L11.4903 15.45C11.8103 15.59 12.1803 15.59 12.5003 15.45L19.2403 12.45C19.7403 12.23 20.1903 11.54 20.1903 10.99C20.1903 10.58 20.5203 10.25 20.9303 10.25C21.3403 10.25 21.6703 10.58 21.6703 10.99C21.6703 12.11 20.8703 13.35 19.8403 13.81L13.1003 16.81C12.7603 16.96 12.3803 17.04 12.0003 17.04Z"
+                        fill="#292D32" />
+                    <path
+                        d="M12.0003 22.0009C11.6203 22.0009 11.2403 21.9209 10.8903 21.7709L4.15031 18.7709C3.04031 18.2809 2.32031 17.1709 2.32031 15.9509C2.32031 15.5409 2.65031 15.2109 3.06031 15.2109C3.47031 15.2109 3.80031 15.5409 3.80031 15.9509C3.80031 16.5809 4.17031 17.1509 4.75031 17.4109L11.4903 20.4109C11.8103 20.5509 12.1803 20.5509 12.5003 20.4109L19.2403 17.4109C19.8103 17.1609 20.1903 16.5809 20.1903 15.9509C20.1903 15.5409 20.5203 15.2109 20.9303 15.2109C21.3403 15.2109 21.6703 15.5409 21.6703 15.9509C21.6703 17.1709 20.9503 18.2709 19.8403 18.7709L13.1003 21.7709C12.7603 21.9209 12.3803 22.0009 12.0003 22.0009Z"
+                        fill="#292D32" />
+                </svg>
+                <h2>my posts</h2>
+            </a>
+            <a routerLink="/new-post" routerLinkActive="active-menu-item" class="nav-menu-item">
+                <div></div>
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16 2H8C4 2 2 4 2 8V21C2 21.55 2.45 22 3 22H16C20 22 22 20 22 16V8C22 4 20 2 16 2ZM11.11 16.66C10.86 16.91 10.4 17.14 10.06 17.19L7.98 17.48C7.9 17.49 7.82 17.5 7.75 17.5C7.4 17.5 7.08 17.38 6.85 17.15C6.57 16.87 6.45 16.46 6.52 16.02L6.81 13.94C6.86 13.6 7.09 13.13 7.34 12.89L11.11 9.12C11.17 9.3 11.25 9.48 11.34 9.68C11.43 9.86 11.52 10.04 11.62 10.21C11.7 10.35 11.79 10.49 11.87 10.59C11.97 10.74 12.07 10.87 12.14 10.94C12.18 11 12.22 11.04 12.23 11.06C12.45 11.31 12.68 11.55 12.9 11.73C12.96 11.79 13 11.82 13.01 11.83C13.14 11.93 13.26 12.04 13.38 12.11C13.51 12.21 13.65 12.3 13.79 12.38C13.96 12.48 14.14 12.58 14.33 12.67C14.52 12.76 14.7 12.83 14.88 12.89L11.11 16.66ZM16.55 11.23L15.77 12.01C15.72 12.06 15.65 12.09 15.58 12.09C15.56 12.09 15.52 12.09 15.5 12.08C13.78 11.59 12.41 10.22 11.92 8.5C11.89 8.41 11.92 8.31 11.99 8.24L12.78 7.45C14.07 6.16 15.29 6.19 16.55 7.45C17.19 8.09 17.51 8.71 17.5 9.35C17.5 9.98 17.19 10.59 16.55 11.23Z"
+                        fill="#292D32" />
+                </svg>
+                <h2>new post</h2>
+            </a>
+            <a class="nav-menu-item" routerLinkActive="active-menu-item">
+                <div></div>
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M2.74982 18.6508C2.33982 18.6508 1.99982 18.3108 1.99982 17.9008V12.2008C1.94982 9.49078 2.95982 6.93078 4.83982 5.01078C6.71982 3.10078 9.23982 2.05078 11.9498 2.05078C17.4898 2.05078 21.9998 6.56078 21.9998 12.1008V17.8008C21.9998 18.2108 21.6598 18.5508 21.2498 18.5508C20.8398 18.5508 20.4998 18.2108 20.4998 17.8008V12.1008C20.4998 7.39078 16.6698 3.55078 11.9498 3.55078C9.63982 3.55078 7.49982 4.44078 5.90982 6.06078C4.30982 7.69078 3.45982 9.86078 3.49982 12.1808V17.8908C3.49982 18.3108 3.16982 18.6508 2.74982 18.6508Z"
+                        fill="#292D32" />
+                    <path
+                        d="M5.94 12.4492H5.81C3.71 12.4492 2 14.1592 2 16.2592V18.1392C2 20.2392 3.71 21.9492 5.81 21.9492H5.94C8.04 21.9492 9.75 20.2392 9.75 18.1392V16.2592C9.75 14.1592 8.04 12.4492 5.94 12.4492Z"
+                        fill="#292D32" />
+                    <path
+                        d="M18.19 12.4492H18.06C15.96 12.4492 14.25 14.1592 14.25 16.2592V18.1392C14.25 20.2392 15.96 21.9492 18.06 21.9492H18.19C20.29 21.9492 22 20.2392 22 18.1392V16.2592C22 14.1592 20.29 12.4492 18.19 12.4492Z"
+                        fill="#292D32" />
+                </svg>
+                <h2>support</h2>
+            </a>
         </ng-container>
+        <ng-template #notConnected>
+            <a routerLink="/" routerLinkActive="active-menu-item" class="nav-menu-item">
+                <div></div>
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M21.5 10.9V4.1C21.5 2.6 20.86 2 19.27 2H15.23C13.64 2 13 2.6 13 4.1V10.9C13 12.4 13.64 13 15.23 13H19.27C20.86 13 21.5 12.4 21.5 10.9Z"
+                        fill="#292D32" />
+                    <path
+                        d="M11 13.1V19.9C11 21.4 10.36 22 8.77 22H4.73C3.14 22 2.5 21.4 2.5 19.9V13.1C2.5 11.6 3.14 11 4.73 11H8.77C10.36 11 11 11.6 11 13.1Z"
+                        fill="#292D32" />
+                    <path
+                        d="M21.5 19.9V17.1C21.5 15.6 20.86 15 19.27 15H15.23C13.64 15 13 15.6 13 17.1V19.9C13 21.4 13.64 22 15.23 22H19.27C20.86 22 21.5 21.4 21.5 19.9Z"
+                        fill="#292D32" />
+                    <path
+                        d="M11 6.9V4.1C11 2.6 10.36 2 8.77 2H4.73C3.14 2 2.5 2.6 2.5 4.1V6.9C2.5 8.4 3.14 9 4.73 9H8.77C10.36 9 11 8.4 11 6.9Z"
+                        fill="#292D32" />
+                </svg>
+                <h2>gallery</h2>
+            </a>
+            <a routerLink="/register" routerLinkActive="active-menu-item" class="nav-menu-item">
+                <div></div>
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M21.97 2.33C21.25 1.51 20.18 1 19 1C17.88 1 16.86 1.46 16.13 2.21C15.71 2.64 15.39 3.16 15.2 3.74C15.07 4.14 15 4.56 15 5C15 5.75 15.21 6.46 15.58 7.06C15.78 7.4 16.04 7.71 16.34 7.97C17.04 8.61 17.97 9 19 9C19.44 9 19.86 8.93 20.25 8.79C21.17 8.5 21.94 7.87 22.42 7.06C22.63 6.72 22.79 6.33 22.88 5.93C22.96 5.63 23 5.32 23 5C23 3.98 22.61 3.04 21.97 2.33ZM20.49 5.73H19.75V6.51C19.75 6.92 19.41 7.26 19 7.26C18.59 7.26 18.25 6.92 18.25 6.51V5.73H17.51C17.1 5.73 16.76 5.39 16.76 4.98C16.76 4.57 17.1 4.23 17.51 4.23H18.25V3.52C18.25 3.11 18.59 2.77 19 2.77C19.41 2.77 19.75 3.11 19.75 3.52V4.23H20.49C20.9 4.23 21.24 4.57 21.24 4.98C21.24 5.39 20.91 5.73 20.49 5.73Z"
+                        fill="#292D32" />
+                    <path
+                        d="M22 12C22 10.69 21.75 9.43 21.28 8.28C20.97 8.5 20.62 8.67 20.25 8.79C20.14 8.83 20.03 8.86 19.91 8.89C20.29 9.85 20.5 10.9 20.5 12C20.5 14.32 19.56 16.43 18.04 17.97C17.75 17.6 17.38 17.26 16.94 16.97C14.23 15.15 9.79 15.15 7.06 16.97C6.62 17.26 6.26 17.6 5.96 17.97C4.44 16.43 3.5 14.32 3.5 12C3.5 7.31 7.31 3.5 12 3.5C13.09 3.5 14.14 3.71 15.1 4.09C15.13 3.97 15.16 3.86 15.2 3.74C15.32 3.37 15.49 3.03 15.72 2.72C14.57 2.25 13.31 2 12 2C6.49 2 2 6.49 2 12C2 14.9 3.25 17.51 5.23 19.34C5.23 19.35 5.23 19.35 5.22 19.36C5.32 19.46 5.44 19.54 5.54 19.63C5.6 19.68 5.65 19.73 5.71 19.77C5.89 19.92 6.09 20.06 6.28 20.2C6.35 20.25 6.41 20.29 6.48 20.34C6.67 20.47 6.87 20.59 7.08 20.7C7.15 20.74 7.23 20.79 7.3 20.83C7.5 20.94 7.71 21.04 7.93 21.13C8.01 21.17 8.09 21.21 8.17 21.24C8.39 21.33 8.61 21.41 8.83 21.48C8.91 21.51 8.99 21.54 9.07 21.56C9.31 21.63 9.55 21.69 9.79 21.75C9.86 21.77 9.93 21.79 10.01 21.8C10.29 21.86 10.57 21.9 10.86 21.93C10.9 21.93 10.94 21.94 10.98 21.95C11.32 21.98 11.66 22 12 22C12.34 22 12.68 21.98 13.01 21.95C13.05 21.95 13.09 21.94 13.13 21.93C13.42 21.9 13.7 21.86 13.98 21.8C14.05 21.79 14.12 21.76 14.2 21.75C14.44 21.69 14.69 21.64 14.92 21.56C15 21.53 15.08 21.5 15.16 21.48C15.38 21.4 15.61 21.33 15.82 21.24C15.9 21.21 15.98 21.17 16.06 21.13C16.27 21.04 16.48 20.94 16.69 20.83C16.77 20.79 16.84 20.74 16.91 20.7C17.11 20.58 17.31 20.47 17.51 20.34C17.58 20.3 17.64 20.25 17.71 20.2C17.91 20.06 18.1 19.92 18.28 19.77C18.34 19.72 18.39 19.67 18.45 19.63C18.56 19.54 18.67 19.45 18.77 19.36C18.77 19.35 18.77 19.35 18.76 19.34C20.75 17.51 22 14.9 22 12Z"
+                        fill="#292D32" />
+                    <path
+                        d="M12 6.92969C9.93 6.92969 8.25 8.60969 8.25 10.6797C8.25 12.7097 9.84 14.3597 11.95 14.4197C11.98 14.4197 12.02 14.4197 12.04 14.4197C12.06 14.4197 12.09 14.4197 12.11 14.4197C12.12 14.4197 12.13 14.4197 12.13 14.4197C14.15 14.3497 15.74 12.7097 15.75 10.6797C15.75 8.60969 14.07 6.92969 12 6.92969Z"
+                        fill="#292D32" />
+                </svg>
+                <h2>register</h2>
+            </a>
+            <a routerLinkActive="active-menu-item" class="nav-menu-item">
+                <div></div>
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M2.74982 18.6508C2.33982 18.6508 1.99982 18.3108 1.99982 17.9008V12.2008C1.94982 9.49078 2.95982 6.93078 4.83982 5.01078C6.71982 3.10078 9.23982 2.05078 11.9498 2.05078C17.4898 2.05078 21.9998 6.56078 21.9998 12.1008V17.8008C21.9998 18.2108 21.6598 18.5508 21.2498 18.5508C20.8398 18.5508 20.4998 18.2108 20.4998 17.8008V12.1008C20.4998 7.39078 16.6698 3.55078 11.9498 3.55078C9.63982 3.55078 7.49982 4.44078 5.90982 6.06078C4.30982 7.69078 3.45982 9.86078 3.49982 12.1808V17.8908C3.49982 18.3108 3.16982 18.6508 2.74982 18.6508Z"
+                        fill="#292D32" />
+                    <path
+                        d="M5.94 12.4492H5.81C3.71 12.4492 2 14.1592 2 16.2592V18.1392C2 20.2392 3.71 21.9492 5.81 21.9492H5.94C8.04 21.9492 9.75 20.2392 9.75 18.1392V16.2592C9.75 14.1592 8.04 12.4492 5.94 12.4492Z"
+                        fill="#292D32" />
+                    <path
+                        d="M18.19 12.4492H18.06C15.96 12.4492 14.25 14.1592 14.25 16.2592V18.1392C14.25 20.2392 15.96 21.9492 18.06 21.9492H18.19C20.29 21.9492 22 20.2392 22 18.1392V16.2592C22 14.1592 20.29 12.4492 18.19 12.4492Z"
+                        fill="#292D32" />
+                </svg>
+                <h2>support</h2>
+            </a>
+        </ng-template>
     </div>
-
-    <ng-container *ngIf="isAuth(); else notConnected">
-        <div [ngClass]="{'menu-item1': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
-            <a routerLink="/profile">
-                <h1>Profile</h1>
+    <div class="bottom-section">
+        <ng-container *ngIf="isAuth(); else registerButton">
+            <a class="nav-menu-item-logout" (click)="logout()">
+                <div></div>
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16.8 2H14.2C11 2 9 4 9 7.2V11.25H15.25C15.66 11.25 16 11.59 16 12C16 12.41 15.66 12.75 15.25 12.75H9V16.8C9 20 11 22 14.2 22H16.79C19.99 22 21.99 20 21.99 16.8V7.2C22 4 20 2 16.8 2Z"
+                        fill="#292D32" />
+                    <path
+                        d="M4.56141 11.2498L6.63141 9.17984C6.78141 9.02984 6.85141 8.83984 6.85141 8.64984C6.85141 8.45984 6.78141 8.25984 6.63141 8.11984C6.34141 7.82984 5.86141 7.82984 5.57141 8.11984L2.22141 11.4698C1.93141 11.7598 1.93141 12.2398 2.22141 12.5298L5.57141 15.8798C5.86141 16.1698 6.34141 16.1698 6.63141 15.8798C6.92141 15.5898 6.92141 15.1098 6.63141 14.8198L4.56141 12.7498H9.00141V11.2498H4.56141Z"
+                        fill="#292D32" />
+                </svg>
+                <h2>logout</h2>
             </a>
-        </div>
-        <div [ngClass]="{'menu-item2': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
-            <a routerLink="/my-posts">
-                <h1>My Posts</h1>
+        </ng-container>
+        <ng-template #registerButton>
+            <a routerLink="/login" routerLinkActive="active-menu-item" class="nav-menu-item">
+                <div></div>
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16.8 2H14.2C11 2 9 4 9 7.2V11.25H13.44L11.37 9.18C11.22 9.03 11.15 8.84 11.15 8.65C11.15 8.46 11.22 8.27 11.37 8.12C11.66 7.83 12.14 7.83 12.43 8.12L15.78 11.47C16.07 11.76 16.07 12.24 15.78 12.53L12.43 15.88C12.14 16.17 11.66 16.17 11.37 15.88C11.08 15.59 11.08 15.11 11.37 14.82L13.44 12.75H9V16.8C9 20 11 22 14.2 22H16.79C19.99 22 21.99 20 21.99 16.8V7.2C22 4 20 2 16.8 2Z"
+                        fill="#292D32" />
+                    <path d="M2.75 11.25C2.34 11.25 2 11.59 2 12C2 12.41 2.34 12.75 2.75 12.75H9V11.25H2.75Z"
+                        fill="#292D32" />
+                </svg>
+                <h2>login</h2>
             </a>
-        </div>
-        <div [ngClass]="{'menu-item3': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
-            <a routerLink="/new-post">
-                <h1>New Post</h1>
-            </a>
-        </div>
-        <div [ngClass]="{'menu-item4': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
-            <a routerLink="/gallery">
-                <h1>Gallery</h1>
-            </a>
-        </div>
-        <div [ngClass]="{'menu-item5': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
-            <a routerLink="/about">
-                <h1>About Us</h1>
-            </a>
-        </div>
-        <div [ngClass]="{'menu-item6': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
-            <a routerLink="/contact">
-                <h1>Contact Us</h1>
-            </a>
-        </div>
-    </ng-container>
-    <ng-template #notConnected>
-        <div [ngClass]="{'menu-item1': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
-            <a routerLink="/login">
-                <h1>Login</h1>
-            </a>
-        </div>
-        <div [ngClass]="{'menu-item2': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
-            <a routerLink="/register">
-                <h1>Register</h1>
-            </a>
-        </div>
-        <div [ngClass]="{'menu-item3': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
-            <a routerLink="/gallery">
-                <h1>Gallery</h1>
-            </a>
-        </div>
-        <div [ngClass]="{'menu-item4': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
-            <a routerLink="/about">
-                <h1>About Us</h1>
-            </a>
-        </div>
-        <div [ngClass]="{'menu-item5': true, 'menu-item-show': isActive}" (click)="hideNavMenuContainer()">
-            <a routerLink="/contact">
-                <h1>Contact Us</h1>
-            </a>
-        </div>
-    </ng-template>
-</div>
-
-<div class="nav-container">
-    <div class="nav-bar">
-        <div class="nav-menu" (click)="onClickMenu()">
-            <div class="ham-button">
-                <div class="nav-ham">
-                    <div [ngClass]="{'first-bar': true, 'first-bar-active': isActive}">
-                        <div id="bars"></div>
-                        <div id="bars"></div>
-                    </div>
-                    <div [ngClass]="{'second-bar': true, 'second-bar-active': isActive}" id="bars"></div>
-                    <div [ngClass]="{'third-bar': true, 'third-bar-active': isActive}" id="bars"></div>
-                </div>
-            </div>
-            <div class="ham-text">
-                <h1 class="h1-text">Menu</h1>
-            </div>
-        </div>
-        <div class="nav-logo" (click)="hideNavMenuContainer()">
-            <a routerLink="/"><img class="logo1" src="../../assets/imgs/imgs/new-logo.svg" alt=""> <img class="logo2"
-                    src="../../assets/imgs/imgs/new-logo.svg" alt=""></a>
-        </div>
-        <div class="nav-button">
-            <ng-container *ngIf="isAuth(); else registerButton">
-                <!-- Show Logout button if authenticated -->
-                <a class="nav-button-link" (click)="logout()">
-                    <img class="nav-button-img" src="../../assets/imgs/imgs/logout.svg" alt="">
-                    <h1 class="nav-button-text">Logout</h1>
-                </a>
-            </ng-container>
-            <ng-template #registerButton>
-                <!-- Show Register button if not authenticated -->
-                <a class="nav-button-link" routerLink="/register">
-                    <img class="nav-button-img" src="../../assets/imgs/imgs/cart.svg" alt="">
-                    <h1 class="nav-button-text">Register</h1>
-                </a>
-            </ng-template>
-        </div>
+        </ng-template>
 
     </div>
 </div>
