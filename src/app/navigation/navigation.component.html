@@ -156,3 +156,63 @@
 
     </div>
 </div>
+
+<div class="welcoming-container">
+    <dir class="welcoming">
+        <ng-container *ngIf="isAuth(); else guestWelcome">
+            <div class="user-welcoming">
+                <div>
+                    <h1>Hi, {{userData.name}}</h1>
+                    <img src="https://i.ibb.co/f0W9VPN/icons8-so-so-48.png" alt="">
+                </div>
+                <h1>welcome back</h1>
+            </div>
+        </ng-container>
+        <ng-template #guestWelcome>
+            <div class="user-welcoming">
+                <div>
+                    <h1>Hi, there</h1>
+                    <img src="https://i.ibb.co/f0W9VPN/icons8-so-so-48.png" alt="">
+                </div>
+                <h1>welcome</h1>
+            </div>
+        </ng-template>
+
+        <div class="search-bar">
+            <div class="search-box">
+                <div class="search__container">
+                    <input class="search__input" type="text" [(ngModel)]="searchQuery" (input)="searchPosts()"
+                        placeholder="Search here...">
+                    <svg class="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="25px"
+                        height="25px">
+                        <path
+                            d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z" />
+                    </svg>
+                </div>
+                <ng-container *ngIf="searchResults && searchResults.length > 0">
+                    <div class="search-results">
+                        <ul>
+                            <li *ngFor="let result of searchResults">
+                                <a [routerLink]="['/post/', result._id]" (click)="hideNavMenuContainer()">{{
+                                    result.title
+                                    }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="date">
+            <h1>{{ currentDate }}</h1>
+        </div>
+        <ng-container *ngIf="isAuth();">
+            <div class="profile">
+                <div class="profile-img">
+                    <img [src]="'http://localhost:8080/' + userData.profileImg" alt="">
+                    <div class="dot"></div>
+                </div>
+                <h1>{{userData.name}}</h1>
+            </div>
+        </ng-container>
+    </dir>
+</div>

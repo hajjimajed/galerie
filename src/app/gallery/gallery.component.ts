@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from '../services/auth/auth.service';
+
+interface UserDataResponse {
+  message: string;
+  user: any;
+}
 
 @Component({
   selector: 'app-gallery',
@@ -8,11 +14,33 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GalleryComponent implements OnInit {
   posts: any[] = [];
+  userData: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
     this.fetchPosts();
+    this.getUserData();
+  }
+
+  getUserData() {
+    const token = this.authService.getToken();
+
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+
+    this.http.get<UserDataResponse>('http://localhost:8080/auth/user-data', { headers })
+      .subscribe(
+        (response) => {
+          console.log('user data : ', response);
+          this.userData = response.user;
+        },
+        (error) => {
+          console.log('error retrieving user data: ', error);
+        }
+      )
   }
 
   fetchPosts() {
