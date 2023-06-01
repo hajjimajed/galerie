@@ -1,14 +1,14 @@
 .navigation-bar {
     height: 100vh;
     width: 300px;
-    background-color: #1A1A1A;
+    background-color: #fff;
     position: fixed;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
     z-index: 2;
-    border-right: 1px #ffffff0e solid;
+    border-right: 1px #0000000e solid;
 
     .top-section {
         display: flex;
@@ -46,7 +46,7 @@
 
 
                 path {
-                    fill: #ffffff63;
+                    fill: #00000063;
                     transition: 0.2s ease-in-out all;
                 }
             }
@@ -59,12 +59,12 @@
 
             &:hover {
                 div {
-                    background-color: #fff;
+                    background-color: #000000;
                 }
 
                 svg {
                     path {
-                        fill: #ffffff;
+                        fill: #000000;
                     }
                 }
             }
@@ -72,12 +72,12 @@
 
         .active-menu-item {
             div {
-                background-color: #fff;
+                background-color: #000000;
             }
 
             svg {
                 path {
-                    fill: #ffffff;
+                    fill: #000000;
                 }
             }
         }
@@ -111,7 +111,7 @@
 
 
                 path {
-                    fill: #ffffff63;
+                    fill: #00000063;
                     transition: 0.2s ease-in-out all;
                 }
             }
@@ -124,12 +124,12 @@
 
             &:hover {
                 div {
-                    background-color: #fff;
+                    background-color: #000000;
                 }
 
                 svg {
                     path {
-                        fill: #ffffff;
+                        fill: #000000;
                     }
                 }
             }
@@ -137,12 +137,12 @@
 
         .active-menu-item {
             div {
-                background-color: #fff;
+                background-color: #000000;
             }
 
             svg {
                 path {
-                    fill: #ffffff;
+                    fill: #000000;
                 }
             }
         }
@@ -174,12 +174,12 @@
             &:hover {
                 svg {
                     path {
-                        fill: #ffffff;
+                        fill: #000000;
                     }
                 }
 
                 h2 {
-                    color: #ffffff;
+                    color: #000000;
                 }
             }
         }
@@ -192,9 +192,10 @@
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #1A1A1A;
+    background-color: #fff;
     z-index: 1;
     display: flex;
+    border-bottom: 1px #0000000e solid;
 
 
     .welcoming {
@@ -239,10 +240,10 @@
                     height: 35px;
                     width: 300px;
                     background-color: transparent;
-                    border: 1px solid #ffffff3a;
+                    border: 1px solid #0000003a;
                     border-radius: 20px;
                     padding-left: 40px;
-                    color: #ffffff;
+                    color: #000000;
                     font-size: 16px;
                     font-weight: 400;
                     transition: 0.2s ease-in-out all;
@@ -263,7 +264,7 @@
                     transition: 0.2s ease-in-out all;
 
                     path {
-                        fill: #ffffff74;
+                        fill: #00000074;
                     }
                 }
 
@@ -277,7 +278,7 @@
                     }
 
                     &::placeholder {
-                        color: #ffffff;
+                        color: #000000;
                     }
                 }
             }
@@ -294,7 +295,7 @@
 
                 li {
                     padding: 8px 0;
-                    border-bottom: 1px solid #ffffff26;
+                    border-bottom: 1px solid #00000026;
                 }
             }
         }
@@ -333,7 +334,7 @@
                     height: 16px;
                     border-radius: 8px;
                     background-color: #15CB49;
-                    border: 3px solid black;
+                    border: 3px solid rgb(255, 255, 255);
                     position: absolute;
                     bottom: 0;
                     right: 0;

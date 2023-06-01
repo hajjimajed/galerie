@@ -2,12 +2,14 @@
     width: calc(80vw - 300px);
     margin-left: 300px;
     margin-top: 20px;
-    background-color: #1A1A1A;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     position: relative;
     display: flex;
     flex-direction: column;
+    border: 1px solid #0000000e;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 
     .user {
         display: flex;
@@ -43,7 +45,7 @@
                 height: 16px;
                 border-radius: 8px;
                 background-color: #15CB49;
-                border: 3px solid black;
+                border: 3px solid rgb(255, 255, 255);
                 position: absolute;
                 bottom: 0;
                 right: 0;
@@ -77,13 +79,14 @@
                     width: 60%;
                     height: 80%;
                     cursor: pointer;
-                    background-color: #282828;
+                    background-color: #F8FAFB;
                     padding: 15px 10px;
                     border-radius: 10px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     overflow: hidden;
+                    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
                     &:hover {
                         img {
@@ -110,9 +113,10 @@
             all: unset;
             width: 100%;
             margin-bottom: 15px;
-            background-color: #282828;
+            background-color: #F8FAFB;
             padding: 15px 10px;
             border-radius: 10px;
+            border: 1px solid #0000000e;
 
             &::placeholder {
                 font-size: 20px;
@@ -121,7 +125,7 @@
 
             &:focus {
                 &::placeholder {
-                    color: #ffffffb5;
+                    color: #000000b5;
                 }
             }
         }
@@ -136,6 +140,8 @@
         padding: 10px 40px;
         border-radius: 25px;
         transition: 0.2s ease-in-out all;
+        color: #ffffff;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
         &:hover {
             background-color: #2b60b7;

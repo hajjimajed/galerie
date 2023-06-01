@@ -7,7 +7,7 @@
 
     .create-post-toggle {
         width: calc(80% - 300px);
-        background-color: #1A1A1A;
+        background-color: #ffffff;
         overflow: hidden;
         margin: 10px 0;
         margin-left: 300px;
@@ -17,6 +17,8 @@
         position: relative;
         display: flex;
         align-items: center;
+        border: 1px solid #0000000e;
+        box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 
         .user {
             display: flex;
@@ -46,7 +48,7 @@
                     height: 16px;
                     border-radius: 8px;
                     background-color: #15CB49;
-                    border: 3px solid black;
+                    border: 3px solid rgb(255, 255, 255);
                     position: absolute;
                     bottom: 0;
                     right: 0;
@@ -56,18 +58,19 @@
             .post-toggle {
                 height: 50px;
                 width: calc(100% - 70px);
-                background-color: #282828;
+                background-color: #F8FAFB;
                 border-radius: 25px;
                 cursor: pointer;
                 padding-left: 30px;
                 display: flex;
                 align-items: center;
+                border: 1px solid #0000000e;
 
                 h1 {
                     font-size: 20px;
                     font-weight: 300;
                     text-transform: capitalize;
-                    color: #ffffff7d;
+                    color: #0000007d;
                 }
             }
         }
@@ -94,13 +97,15 @@
 
     .gallery-posts {
         width: calc(80% - 300px);
-        background-color: #1A1A1A;
+        background-color: #fff;
         overflow: hidden;
         margin: 20px 0;
         padding: 20px 20px 0 20px;
         border-radius: 10px;
         position: relative;
         margin-left: 300px;
+        border: 1px solid #0000000e;
+        box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 
         .profile-container {
             width: 100%;
@@ -125,7 +130,7 @@
                 font-size: 16px;
                 font-weight: 400;
                 text-transform: capitalize;
-                color: #ffffff89;
+                color: #00000089;
             }
         }
 
@@ -134,6 +139,8 @@
             height: 70vh;
             position: relative;
             margin: 20px 0;
+            border: 1px solid #0000000e;
+            border-radius: 10px;
 
             img {
                 width: 100%;
@@ -162,6 +169,7 @@
                     font-weight: 400;
                     text-transform: capitalize;
                     margin-left: 30px;
+                    color: #ffffff;
                 }
 
                 h4 {
@@ -188,7 +196,7 @@
                 cursor: pointer;
 
                 path {
-                    fill: #ffffff76;
+                    fill: #00000076;
                 }
             }
 
@@ -196,7 +204,7 @@
                 font-size: 18px;
                 font-weight: 300;
                 letter-spacing: 0.5px;
-                color: #ffffff76;
+                color: #00000076;
                 cursor: pointer;
                 transition: 0.1s ease-in-out all;
             }
@@ -209,12 +217,12 @@
                 &:hover {
                     svg {
                         path {
-                            fill: #ffffff;
+                            fill: #000000;
                         }
                     }
 
                     h4 {
-                        color: #ffffff;
+                        color: #000000;
                     }
                 }
             }
@@ -247,8 +255,9 @@
             height: 100px;
             display: flex;
             align-items: center;
-            background-color: #282828;
+            background-color: #F8FAFB;
             padding: 10px 20px;
+            border-top: 1px solid #0000000e;
 
             .comment-img {
                 width: 50px;
@@ -272,7 +281,7 @@
                     height: 16px;
                     border-radius: 8px;
                     background-color: #15CB49;
-                    border: 3px solid black;
+                    border: 3px solid rgb(255, 255, 255);
                     position: absolute;
                     bottom: 0;
                     right: 0;
