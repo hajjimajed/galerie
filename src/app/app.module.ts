@@ -9,13 +9,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
-import { NewPostComponent } from './new-post/new-post.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { PostUpdateComponent } from './post-update/post-update.component';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuard } from './guard/auth.guard';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +24,11 @@ import { AuthGuard } from './guard/auth.guard';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    NewPostComponent,
     GalleryComponent,
     MyPostsComponent,
     PostDetailsComponent,
     PostUpdateComponent,
+    CreatePostComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,11 +5,98 @@
     flex-direction: column;
     align-items: center;
 
+    .create-post-toggle {
+        width: calc(80% - 300px);
+        background-color: #1A1A1A;
+        overflow: hidden;
+        margin: 10px 0;
+        margin-left: 300px;
+        height: 80px;
+        padding: 20px 20px 0 20px;
+        border-radius: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .user {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+
+            .user-img {
+                width: 50px;
+                height: 50px;
+                position: relative;
+                margin-right: 20px;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    object-fit: cover;
+                    border-radius: 35px;
+                    margin-right: 20px;
+                }
+
+                .dot {
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 8px;
+                    background-color: #15CB49;
+                    border: 3px solid black;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                }
+            }
+
+            .post-toggle {
+                height: 50px;
+                width: calc(100% - 70px);
+                background-color: #282828;
+                border-radius: 25px;
+                cursor: pointer;
+                padding-left: 30px;
+                display: flex;
+                align-items: center;
+
+                h1 {
+                    font-size: 20px;
+                    font-weight: 300;
+                    text-transform: capitalize;
+                    color: #ffffff7d;
+                }
+            }
+        }
+    }
+
+    .new-post-container {
+        opacity: 0;
+        z-index: -1;
+        transform: translateY(-50px);
+        transform-origin: top;
+        transition: 0.3s ease-in-out all;
+        height: 0;
+        overflow: hidden;
+
+        &.new-post-container-visible {
+            opacity: 1;
+            z-index: 1;
+            transform: translateY(0);
+            height: 400px;
+            overflow: visible;
+        }
+    }
+
+
     .gallery-posts {
         width: calc(80% - 300px);
         background-color: #1A1A1A;
         overflow: hidden;
-        margin: 50px 0;
+        margin: 20px 0;
         padding: 20px 20px 0 20px;
         border-radius: 10px;
         position: relative;

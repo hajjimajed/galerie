@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../services/auth/auth.service';
-import { Router } from '@angular/router'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 interface UserDataResponse {
   message: string;
@@ -9,23 +8,24 @@ interface UserDataResponse {
 }
 
 @Component({
-  selector: 'app-new-post',
-  templateUrl: './new-post.component.html',
-  styleUrls: ['./new-post.component.scss']
+  selector: 'app-create-post',
+  templateUrl: './create-post.component.html',
+  styleUrls: ['./create-post.component.scss']
 })
-export class NewPostComponent implements OnInit {
+export class CreatePostComponent implements OnInit {
+
+  userData: any;
+
+  imageUrl: string | undefined;
 
   title: string;
   description: string;
   category: string;
   image: File | null;
 
-  userData: any;
-
   constructor(
-    private http: HttpClient,
     private authService: AuthService,
-    private router: Router
+    private http: HttpClient
   ) {
     this.title = '';
     this.description = '';
@@ -71,7 +71,6 @@ export class NewPostComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log('post created successfully');
-          this.router.navigate(['/']);
         },
         (error) => {
           console.error('error while creating post', error);
@@ -81,6 +80,14 @@ export class NewPostComponent implements OnInit {
 
   onFileSelected(event: any) {
     this.image = event.target.files[0];
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e: any) => {
+      this.imageUrl = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
   }
 
 }

@@ -1,23 +1,93 @@
-.profile {
-    text-align: center;
-    padding: 20px;
-    margin-top: 200px;
+.profile-container {
+    width: calc(100vw - 400px);
+    height: 70vh;
+    margin-top: 180px;
+    margin-left: 350px;
+    background-color: #1A1A1A;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
 
-    .profile-image {
+    .profile-cover {
+        width: 100%;
+        height: 35%;
+        background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
+    }
+
+    .profile-infos {
+        width: 100%;
+        height: 65%;
+        padding-left: 50px;
+
+        .infos {
+            margin-top: 100px;
+
+            h1 {
+                font-size: 30px;
+                font-weight: 400;
+                text-transform: capitalize;
+            }
+
+            .infos-location {
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+
+                img {
+                    width: 25px;
+                    height: auto;
+                    margin-right: 15px;
+                }
+
+                h2 {
+                    font-size: 18px;
+                    font-weight: 300;
+                    text-transform: capitalize;
+                    color: #ffffff60;
+                }
+            }
+
+            .infos-details {
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+
+                h2 {
+                    font-size: 18px;
+                    font-weight: 300;
+                    text-transform: capitalize;
+                }
+
+                h3 {
+                    font-size: 18px;
+                    font-weight: 300;
+                }
+
+                svg {
+                    path {
+                        fill: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    .profile-img {
+        position: absolute;
         width: 150px;
         height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 10px;
-    }
+        border-radius: 75px;
+        border: #fff solid 5px;
+        top: 110px;
+        left: 50px;
 
-    h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-
-    p {
-        font-size: 16px;
-        margin-bottom: 5px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 75px;
+        }
     }
 }

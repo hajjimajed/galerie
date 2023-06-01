@@ -1,24 +1,33 @@
-<div class="profile">
-    <ng-container *ngIf="userData">
+<div class="profile-container">
+    <div class="profile-cover">
+        <img src="" alt="">
+    </div>
+    <div class="profile-infos">
+        <div class="infos">
+            <h1>{{userData.name}}</h1>
+            <div class="infos-location">
+                <img src="https://i.ibb.co/H4tKHxS/tunisia.png" alt="">
+                <h2>Sidi Bouzid, Tunisia</h2>
+            </div>
+            <div class="infos-details">
+                <h3>{{userData.email}}</h3>
+                <div></div>
+                <svg width="20px" height="20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" fill="none" width="20" height="20" />
+                    <g>
+                        <path
+                            d="M18 16V4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h13c.55 0 1-.45 1-1zM8 11h1c.55 0 1 .45 1 1s-.45 1-1 1H8v1.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5V13H6c-.55 0-1-.45-1-1s.45-1 1-1h1V5.5c0-.28.22-.5.5-.5s.5.22.5.5V11zm5-2h-1c-.55 0-1-.45-1-1s.45-1 1-1h1V5.5c0-.28.22-.5.5-.5s.5.22.5.5V7h1c.55 0 1 .45 1 1s-.45 1-1 1h-1v5.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5V9z" />
+                    </g>
+                </svg>
+                <h2>{{userData.role}}</h2>
+            </div>
+        </div>
+        <div class="profile-btns">
+
+        </div>
+    </div>
+    <div class="profile-img">
         <img *ngIf="userData.profileImg" [src]="'http://localhost:8080/' + userData.profileImg" alt="Profile Image"
             class="profile-image">
-        <h2>{{ userData.name }}</h2>
-        <p>Email: {{ userData.email }}</p>
-        <p>Role: {{ userData.role }}</p>
-        <!-- Add more fields as needed -->
-
-
-        <form (submit)="updateUserData()">
-            <label for="name">Name:</label>
-            <input type="text" id="name" [(ngModel)]="userData.name" name="name">
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" [(ngModel)]="userData.email" name="email">
-
-            <label for="profileImg">Profile Image:</label>
-            <input type="file" id="profileImg" (change)="onProfileImageChange($event)" name="profileImg">
-
-            <button type="submit">Update</button>
-        </form>
-    </ng-container>
+    </div>
 </div>

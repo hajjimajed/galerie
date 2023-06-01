@@ -1,0 +1,41 @@
+<div class="create-post-container">
+    <div class="user">
+        <div class="user-img">
+            <img [src]="'http://localhost:8080/' + userData.profileImg" alt="">
+            <div class="dot"></div>
+        </div>
+        <h1>{{userData.name}}</h1>
+    </div>
+    <form class="create-post-form" (ngSubmit)="onSubmit()">
+        <div class="inputs">
+            <div class="text-inputs">
+                <div>
+                    <input type="text" id="title" name="title" [(ngModel)]="title" placeholder="Post title..." required>
+                </div>
+                <div>
+                    <textarea id="description" name="description" [(ngModel)]="description"
+                        placeholder="What's in your mind, {{userData.name}}..." required></textarea>
+                </div>
+                <div>
+                    <select id="category" name="category" [(ngModel)]="category" required>
+                        <option value="" disabled selected>Select a category...</option>
+                        <option value="nature">Nature</option>
+                        <option value="animals">Animals</option>
+                        <option value="architecture">Architecture</option>
+                        <option value="food">Food</option>
+                        <option value="cars">Cars</option>
+                    </select>
+                </div>
+            </div>
+            <div class="image-input">
+                <input class="custom-file-input" type="file" id="image" name="image" (change)="onFileSelected($event)"
+                    required>
+                <label for="image" class="image-preview">
+                    <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image">
+                    <img *ngIf="!imageUrl" src="https://i.ibb.co/kqFBS8H/image.png" alt="Default Image">
+                </label>
+            </div>
+        </div>
+        <button class="post-btn" type="submit">Create Post</button>
+    </form>
+</div>

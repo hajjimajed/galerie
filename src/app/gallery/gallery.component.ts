@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../services/auth/auth.service';
 
+
 interface UserDataResponse {
   message: string;
   user: any;
@@ -10,11 +11,13 @@ interface UserDataResponse {
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.scss']
+  styleUrls: ['./gallery.component.scss'],
 })
 export class GalleryComponent implements OnInit {
   posts: any[] = [];
   userData: any;
+
+  postContainerVisible = false;
 
   constructor(
     private http: HttpClient,
@@ -68,6 +71,13 @@ export class GalleryComponent implements OnInit {
       hour12: true,
     };
     return date.toLocaleDateString('en-US', options);
+  }
+
+
+
+
+  togglePostContainer() {
+    this.postContainerVisible = !this.postContainerVisible;
   }
 
 }
