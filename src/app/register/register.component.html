@@ -1,25 +1,40 @@
-<br><br><br><br><br><br><br><br><br><br>
 <div class="register-container">
     <form class="register-form" (ngSubmit)="submitForm()">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" [(ngModel)]="email" required>
+        <label for="email">Email <span>*</span></label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" placeholder="Enter your email" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" [(ngModel)]="password" required>
+        <label for="password">Password <span>*</span></label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" [(ngModel)]="password"
+            required>
 
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" [(ngModel)]="name" required>
+        <label for="name">Name <span>*</span></label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" [(ngModel)]="name" required>
 
-        <label for="image">Profile Image:</label>
-        <input type="file" id="image" name="image" (change)="onFileSelected($event)">
+        <label class="file-label" for="image">
+            Profile Image
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="48.000000pt" height="48.000000pt"
+                viewBox="0 0 48.000000 48.000000" preserveAspectRatio="xMidYMid meet">
 
-        <label for="role">Role:</label>
+                <g transform="translate(0.000000,48.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                    <path d="M172 365 c-14 -16 -32 -25 -52 -25 -41 0 -50 -23 -50 -123 0 -117 0
+-117 172 -117 168 0 168 0 168 119 0 98 -10 121 -50 121 -20 0 -38 9 -52 25
+-17 20 -31 25 -68 25 -37 0 -51 -5 -68 -25z m107 -70 c31 -16 41 -33 41 -71 0
+-59 -56 -96 -110 -74 -67 28 -69 113 -5 148 27 15 41 15 74 -3z" />
+                    <path d="M207 262 c-23 -25 -21 -55 4 -78 19 -17 23 -17 47 -3 33 18 40 54 16
+80 -22 24 -46 24 -67 1z" />
+                </g>
+            </svg>
+        </label>
+        <input class="file-input" type="file" id="image" name="image" (change)="onFileSelected($event)">
+
+        <label for="role">Role <span>*</span></label>
         <select id="role" name="role" [(ngModel)]="role" required>
+            <option value="" disabled selected>Select your role</option>
             <option value="admin">Admin</option>
             <option value="user">User</option>
         </select>
         <button type="submit">Register</button>
 
-        <h1>A member ? <a routerLink="/login">Login</a></h1>
+        <h1>Already have an account? <a routerLink="/login">Login</a></h1>
     </form>
 </div>

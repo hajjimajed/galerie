@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit {
 
   userData: any;
   profileImage: File | undefined;
+  isUpdate = false;
+  selectedProfileImage: File | undefined;
 
   constructor(
     private authService: AuthService,
@@ -47,6 +49,15 @@ export class ProfileComponent implements OnInit {
 
   onProfileImageChange(event: any) {
     this.profileImage = event.target.files[0];
+    this.selectedProfileImage = event.target.files[0];
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e: any) => {
+      this.selectedProfileImage = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
   }
 
   updateUserData() {
@@ -56,6 +67,7 @@ export class ProfileComponent implements OnInit {
     const formData: FormData = new FormData();
     formData.append('email', this.userData.email);
     formData.append('name', this.userData.name);
+    formData.append('role', this.userData.role);
     if (this.profileImage) {
       formData.append('image', this.profileImage, this.profileImage.name);
     }
@@ -65,11 +77,16 @@ export class ProfileComponent implements OnInit {
         (response) => {
           console.log('user data updated:', response);
           this.userData = response.user;
+          this.toggleUpdate();
         },
         (error) => {
           console.log('error updating user data:', error);
         }
       );
+  }
+
+  toggleUpdate() {
+    this.isUpdate = !this.isUpdate;
   }
 
 }
