@@ -1,99 +1,148 @@
 .post-update-container {
-    width: 100vw;
-    height: 100vh;
+    width: calc(100vw - 400px);
+    margin-top: 150px;
+    margin-left: 350px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 
-    .post-update {
-        width: 70%;
-        height: 70%;
-        background-color: #1A1A1A;
-        overflow: hidden;
-        padding: 20px;
-        margin-top: 50px;
+    .update-post-form {
+        width: calc(100% - 20px);
+        background-color: #ffffff;
+        padding: 30px;
         border-radius: 10px;
-        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+        margin-top: 30px;
 
 
-        .update-post-form {
+        .inputs {
+            width: 100%;
             display: flex;
-            flex-direction: column;
 
-            input,
-            textarea {
-                all: unset;
-                height: 40px;
-                width: calc(100% - 20px);
-                font-size: 18px;
-                background-color: #282828;
-                margin-bottom: 20px;
-                border-radius: 5px;
-                padding-left: 20px;
+            .text-inputs {
+                width: 60%;
+            }
 
-                &::placeholder {
-                    font-size: 18px;
-                    transition: 0.1s ease-in-out all;
+            .image-input {
+                width: 40%;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+
+                .custom-file-input {
+                    display: none;
                 }
 
-                &:focus {
-                    &::placeholder {
-                        color: #ffffffb5;
-                    }
-                }
-            }
+                .image-preview {
+                    background-color: transparent;
+                    width: 80%;
+                    height: 100%;
+                    cursor: pointer;
+                    background-color: #F8FAFB;
+                    padding: 15px 10px;
+                    border-radius: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+                    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                    margin-left: 20px;
 
-            textarea {
-                height: 80px;
-                padding: 10px 0;
-                padding-left: 20px;
-            }
-
-            .custom-file-input {
-                display: none;
-            }
-
-            .custom-file-label {
-                cursor: pointer;
-
-                div {
-                    width: fit-content;
-                    padding: 10px;
-                    border: 2px solid #282828;
-                    border-radius: 5px;
-
-                    svg {
-                        path {
-                            stroke: #fff;
+                    &:hover {
+                        img {
+                            opacity: 1;
                         }
                     }
+
+
+                    img {
+                        width: 80%;
+                        height: 80%;
+                        object-fit: cover;
+                        border-radius: 10px;
+                        opacity: 0.8;
+                        transition: 0.2s ease-in-out all;
+                    }
+                }
+            }
+        }
+
+        input,
+        textarea,
+        select {
+            all: unset;
+            width: 100%;
+            margin-bottom: 15px;
+            background-color: #F8FAFB;
+            padding: 15px 10px;
+            border-radius: 10px;
+            border: 1px solid #0000000e;
+
+            &::placeholder {
+                font-size: 20px;
+                transition: 0.1s ease-in-out all;
+            }
+
+            &:focus {
+                &::placeholder {
+                    color: #000000b5;
+                }
+            }
+        }
+    }
+
+    .btns-container {
+        display: flex;
+        margin-top: 20px;
+
+        button {
+            all: unset;
+            cursor: pointer;
+            background-color: #3a86ff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: 0.2s ease-in-out all;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-right: 20px;
+
+            h1 {
+                text-transform: capitalize;
+                font-size: 18px;
+                font-weight: 400;
+            }
+
+            svg {
+                margin-right: 10px;
+                width: 20px;
+                height: 20px;
+
+                path {
+                    fill: #ffffff;
                 }
             }
 
-            button[type="submit"] {
-                display: block;
-                width: 200px;
-                margin-top: 30px;
-                padding: 12px 24px;
-                background-color: transparent;
-                color: #ffffff;
-                font-size: 14px;
-                line-height: 18px;
-                border-radius: 50px;
-                border: 1px solid rgba(255, 255, 255, 0.6);
-                transition: all 250ms ease-in-out;
-                cursor: pointer;
+            &:hover {
+                background-color: #2b60b7;
             }
 
-            button[type="submit"]:hover {
-                background-color: rgba(255, 255, 255, 0.2);
-                border-color: rgba(255, 255, 255, 1);
-            }
+            &:last-child {
+                color: #EE4444;
+                background-color: #F8FAFB;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
-            button[type="submit"]:focus {
-                outline: 0;
+                svg {
+                    path {
+                        fill: #EE4444;
+                    }
+                }
             }
-
         }
+
+
     }
+
+
 }

@@ -1,32 +1,52 @@
 <div class="post-update-container">
-    <div class="post-update">
-        <form class="update-post-form" (submit)="onSubmit()">
-            <input type="text" id="name" [(ngModel)]="post.title" name="title">
-
-            <input type="text" id="description" [(ngModel)]="post.description" name="description">
-
-            <input type="text" id="category" [(ngModel)]="post.category" name="category">
-
-            <input class="custom-file-input" type="file" id="image" (change)="onFileSelected($event)" name="image">
-
-            <label for="image" class="custom-file-label">
+    <form class="update-post-form" (submit)="onSubmit()">
+        <div class="inputs">
+            <div class="text-inputs">
                 <div>
-                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M38 21V40C38 41.1046 37.1046 42 36 42H8C6.89543 42 6 41.1046 6 40V12C6 10.8954 6.89543 10 8 10H26.3636"
-                            stroke="#000" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M12 31.0308L18 23L21 26L24.5 20.5L32 31.0308H12Z" fill="none" stroke="#000"
-                            stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M34 10H42" stroke="#000" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M37.9941 5.79544V13.7954" stroke="#000" stroke-width="3" stroke-miterlimit="10"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                    <input type="text" id="title" name="title" [(ngModel)]="post.title" placeholder="Post title..."
+                        required>
                 </div>
-            </label>
-
-            <button type="submit">Update</button>
-        </form>
-    </div>
+                <div>
+                    <textarea id="description" name="description" [(ngModel)]="post.description"
+                        placeholder="What's in your mind" required></textarea>
+                </div>
+                <div>
+                    <select id="category" name="category" [(ngModel)]="post.category" required>
+                        <option value="" disabled selected>Select a category...</option>
+                        <option value="nature">Nature</option>
+                        <option value="animals">Animals</option>
+                        <option value="architecture">Architecture</option>
+                        <option value="food">Food</option>
+                        <option value="cars">Cars</option>
+                    </select>
+                </div>
+            </div>
+            <div class="image-input">
+                <input class="custom-file-input" type="file" id="image" name="image" (change)="onFileSelected($event)"
+                    required>
+                <label for="image" class="image-preview">
+                    <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image">
+                    <img *ngIf="!imageUrl" [src]="'http://localhost:8080/' + post.imageUrl" alt="Default Image">
+                </label>
+            </div>
+        </div>
+        <div class="btns-container">
+            <button type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px" height="30px">
+                    <path
+                        d="M 22.828125 3 C 22.316375 3 21.804562 3.1954375 21.414062 3.5859375 L 19 6 L 24 11 L 26.414062 8.5859375 C 27.195062 7.8049375 27.195062 6.5388125 26.414062 5.7578125 L 24.242188 3.5859375 C 23.851688 3.1954375 23.339875 3 22.828125 3 z M 17 8 L 5.2597656 19.740234 C 5.2597656 19.740234 6.1775313 19.658 6.5195312 20 C 6.8615312 20.342 6.58 22.58 7 23 C 7.42 23.42 9.6438906 23.124359 9.9628906 23.443359 C 10.281891 23.762359 10.259766 24.740234 10.259766 24.740234 L 22 13 L 17 8 z M 4 23 L 3.0566406 25.671875 A 1 1 0 0 0 3 26 A 1 1 0 0 0 4 27 A 1 1 0 0 0 4.328125 26.943359 A 1 1 0 0 0 4.3378906 26.939453 L 4.3632812 26.931641 A 1 1 0 0 0 4.3691406 26.927734 L 7 26 L 5.5 24.5 L 4 23 z" />
+                </svg>
+                <h1>save edits</h1>
+            </button>
+            <button click="toggleedit()">
+                <svg fill="#000000" width="800px" height="800px" viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <title>ionicons-v5-m</title>
+                    <path
+                        d="M289.94,256l95-95A24,24,0,0,0,351,127l-95,95-95-95A24,24,0,0,0,127,161l95,95-95,95A24,24,0,1,0,161,385l95-95,95,95A24,24,0,0,0,385,351Z" />
+                </svg>
+                <h1>cancel edits</h1>
+            </button>
+        </div>
+    </form>
 </div>

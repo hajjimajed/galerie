@@ -19,6 +19,10 @@ export class PostUpdateComponent implements OnInit {
 
   post: any;
 
+  imageUrl: string | undefined;
+
+
+
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -80,6 +84,18 @@ export class PostUpdateComponent implements OnInit {
 
   onFileSelected(event: any) {
     this.image = event.target.files[0];
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e: any) => {
+      this.imageUrl = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  toggleedit() {
+    this.router.navigate(['/my-posts']);
   }
 
 }
