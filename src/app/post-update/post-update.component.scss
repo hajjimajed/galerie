@@ -77,9 +77,10 @@
             padding: 15px 10px;
             border-radius: 10px;
             border: 1px solid #0000000e;
+            font-size: 16px;
 
             &::placeholder {
-                font-size: 20px;
+                font-size: 16px;
                 transition: 0.1s ease-in-out all;
             }
 
@@ -110,7 +111,7 @@
 
             h1 {
                 text-transform: capitalize;
-                font-size: 18px;
+                font-size: 14px;
                 font-weight: 400;
             }
 
