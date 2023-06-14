@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { formatDate } from '@angular/common';
@@ -20,6 +20,8 @@ export class NavigationComponent implements OnInit {
   currentDate: string;
 
   userData: any;
+
+  isShrunk: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -88,5 +90,10 @@ export class NavigationComponent implements OnInit {
           console.log('error retrieving user data: ', error);
         }
       )
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isShrunk = (window.scrollY > 0); // Update the isShrunk flag based on scroll position
   }
 }

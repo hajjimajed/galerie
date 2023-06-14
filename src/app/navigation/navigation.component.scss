@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     z-index: 2;
-    border-right: 1px #0000000e solid;
+    border-right: 1.5px #0000000e solid;
 
     .top-section {
         display: flex;
@@ -187,21 +187,25 @@
 }
 
 .welcoming-container {
-    width: 100vw;
-    height: 150px;
-    position: absolute;
+    width: calc(100vw - 700px);
+    height: 120px;
+    position: fixed;
     top: 0;
-    right: 0;
+    left: 300px;
+    padding: 0 45px;
     background-color: #fff;
     z-index: 1;
     display: flex;
+    align-items: center;
     border-bottom: 1px #0000000e solid;
+    transition: 0.3s ease-in-out all;
 
 
     .welcoming {
+        height: 100%;
         display: flex;
         align-items: center;
-        height: 100%;
+
 
         h1 {
             font-size: 14px;
@@ -212,8 +216,6 @@
         .user-welcoming {
             display: flex;
             flex-direction: column;
-            margin-left: 350px;
-            padding-left: 100px;
 
             div {
                 display: flex;
@@ -314,6 +316,72 @@
             }
 
             .profile-img {
+                width: 50px;
+                height: 50px;
+                position: relative;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    object-fit: cover;
+                    border-radius: 35px;
+                    margin-right: 20px;
+                }
+
+                .dot {
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 8px;
+                    background-color: #15CB49;
+                    border: 3px solid rgb(255, 255, 255);
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                }
+            }
+        }
+    }
+}
+
+.welcoming-container.shrunk {
+    height: 80px;
+}
+
+.user-container {
+    width: 400px;
+    height: 100vh;
+    padding: 40px 20px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    border-left: 1.5px #0000000e solid;
+    background-color: #fff;
+
+    .user-infos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 20px;
+        border-bottom: 1px #0000000e solid;
+
+        .infos {
+            display: flex;
+            align-items: center;
+
+            h1 {
+                margin-left: 10px;
+                font-size: 1rem;
+                font-weight: 500;
+                text-transform: capitalize;
+            }
+
+            .user-img {
                 width: 50px;
                 height: 50px;
                 position: relative;
