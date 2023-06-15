@@ -148,7 +148,7 @@
     </div>
 </div>
 
-<div class="welcoming-container" [class.shrunk]="isShrunk">
+<div [ngClass]="{'welcoming-container': !hideRightBar, 'right-bar-disabled': hideRightBar}" [class.shrunk]="isShrunk">
     <dir class="welcoming">
         <!-- <ng-container *ngIf="isAuth(); else guestWelcome">
             <div class="user-welcoming">
@@ -244,7 +244,7 @@
         <div class="contacts-container">
             <div class="contact">
                 <div class="contact-infos">
-                    <img src="https://hips.hearstapps.com/hmg-prod/images/daniel-craig-1632945069.jpg?crop=0.757xw:1.00xh;0.116xw,0&resize=1200:*"
+                    <img src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1176&q=80"
                         alt="">
                     <h1>Daniel Craig</h1>
                 </div>
@@ -264,7 +264,7 @@
             </div>
             <div class="contact">
                 <div class="contact-infos">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80"
+                    <img src="https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
                         alt="">
                     <h1>dua lipa</h1>
                 </div>
@@ -274,7 +274,7 @@
             </div>
             <div class="contact">
                 <div class="contact-infos">
-                    <img src="https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80"
                         alt="">
                     <h1>Charlie puth</h1>
                 </div>

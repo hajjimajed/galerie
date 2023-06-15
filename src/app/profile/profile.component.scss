@@ -1,7 +1,6 @@
 .profile-container {
     width: calc(100vw - 400px);
-    height: 70vh;
-    margin-top: 180px;
+    margin-top: 140px;
     margin-left: 350px;
     background-color: #fff;
     border-radius: 10px;
@@ -14,7 +13,7 @@
 
     .profile-cover {
         width: 100%;
-        height: 35%;
+        height: 25vh;
         background: linear-gradient(68.6deg, rgb(252, 165, 241) 1.8%, rgb(181, 255, 255) 100.5%);
     }
 
@@ -144,6 +143,65 @@
             height: 100%;
             object-fit: cover;
             border-radius: 75px;
+        }
+    }
+
+    .profile-contacts {
+        width: 100%;
+        padding: 0 50px;
+        margin-top: 50px;
+        margin-bottom: 100px;
+
+        .profile-contacts-header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h1 {
+                font-size: 24px;
+                font-weight: 500;
+            }
+
+            a {
+                font-size: 18px;
+                font-weight: 500;
+                color: #2b60b7;
+            }
+        }
+
+        .profile-contacts-content {
+            margin-top: 30px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto auto auto;
+
+            .profile-contact-item {
+                width: 9.5rem;
+                height: 12rem;
+                padding: 1rem;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                border-radius: 10px;
+                margin: 2rem;
+
+                img {
+                    width: 100%;
+                    height: 75%;
+                    border-radius: 20px;
+                    object-fit: cover;
+                }
+
+                h1 {
+                    font-size: 16px;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                }
+            }
         }
     }
 }
