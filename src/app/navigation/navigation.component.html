@@ -150,7 +150,7 @@
 
 <div class="welcoming-container" [class.shrunk]="isShrunk">
     <dir class="welcoming">
-        <ng-container *ngIf="isAuth(); else guestWelcome">
+        <!-- <ng-container *ngIf="isAuth(); else guestWelcome">
             <div class="user-welcoming">
                 <div>
                     <h1>Hi, {{userData.name}}</h1>
@@ -167,7 +167,9 @@
                 </div>
                 <h1>welcome</h1>
             </div>
-        </ng-template>
+        </ng-template> -->
+
+
 
         <div class="search-bar">
             <div class="search-box">
@@ -199,7 +201,9 @@
     </dir>
 </div>
 
-<div class="user-container">
+
+
+<div [ngClass]="{'user-container': !hideRightBar, 'user-container-none': hideRightBar}">
     <div class="user-infos">
         <div class="infos">
             <div class="user-img">
@@ -208,7 +212,7 @@
             </div>
             <h1>{{userData.name}}</h1>
         </div>
-        <svg width="35px" height="35px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M14.4553 2.47362C13.6943 2.16764 12.865 2 12 2C8.64392 2 5.82455 4.52345 5.45393 7.85899L5.20213 10.1252L5.19608 10.1793C5.08325 11.1625 4.76321 12.1106 4.25708 12.9611L4.22913 13.0077L3.6511 13.9711L3.62695 14.0114C3.38543 14.4138 3.16661 14.7785 3.02086 15.0879C2.87274 15.4024 2.71437 15.8286 2.7906 16.3117C2.86595 16.7893 3.11173 17.2233 3.48245 17.5337C3.85752 17.8476 4.3044 17.931 4.65029 17.9658C4.99066 18.0001 5.41591 18 5.8853 18L5.9322 18H18.0677L18.1146 18C18.584 18 19.0093 18.0001 19.3497 17.9658C19.6955 17.931 20.1424 17.8476 20.5175 17.5337C20.8882 17.2233 21.134 16.7893 21.2093 16.3117C21.2856 15.8286 21.1272 15.4024 20.9791 15.0879C20.8333 14.7785 20.6145 14.4138 20.373 14.0114L20.3488 13.9711L19.7708 13.0077L19.7429 12.9611C19.3641 12.3247 19.0896 11.6336 18.9281 10.914C18.6274 10.9705 18.3171 11 18 11C17.616 11 17.2422 10.9567 16.883 10.8748C17.0676 11.9715 17.4541 13.0259 18.0242 13.9839L18.0558 14.0367L18.6339 15.0001C18.9074 15.456 19.0722 15.733 19.1697 15.9401C19.175 15.9514 19.1799 15.9621 19.1844 15.972C19.1736 15.9733 19.1619 15.9746 19.1495 15.9759C18.9217 15.9988 18.5993 16 18.0677 16H5.9322C5.40061 16 5.07823 15.9988 4.85049 15.9759C4.83804 15.9746 4.82639 15.9733 4.81553 15.972C4.82001 15.9621 4.8249 15.9514 4.83024 15.9401C4.92776 15.733 5.09258 15.456 5.36609 15.0001L5.94412 14.0367L5.97575 13.9839C6.6265 12.8904 7.03797 11.6714 7.18304 10.4073L7.1899 10.3461L7.4417 8.07985C7.69977 5.75718 9.66301 4 12 4C12.463 4 12.9113 4.06898 13.3347 4.19767C13.5866 3.54594 13.9712 2.96023 14.4553 2.47362ZM16.9821 4.27804C16.3942 4.62632 16 5.26713 16 6C16 6.14503 16.0154 6.28645 16.0447 6.42272C16.1651 6.6476 16.2675 6.88404 16.3497 7.13021C16.7101 7.65547 17.3148 8 18 8C18.1918 8 18.3774 7.97298 18.5531 7.92254L18.546 7.85899C18.3938 6.48875 17.8283 5.25555 16.9821 4.27804Z"
                 fill="#33363F" />
@@ -217,5 +221,85 @@
                 stroke="#33363F" stroke-width="2" stroke-linecap="round" />
             <circle cx="18" cy="6" r="2.5" fill="#EE4444" stroke="#EE4444" />
         </svg>
+    </div>
+    <div class="contact-header">
+        <a href="">
+            <h1>Contacts</h1>
+        </a>
+        <svg fill="#000000" width="28px" height="28px" viewBox="-2 -2 24 24" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMinYMin" class="jam jam-write">
+            <path
+                d='M5.72 14.456l1.761-.508 10.603-10.73a.456.456 0 0 0-.003-.64l-.635-.642a.443.443 0 0 0-.632-.003L6.239 12.635l-.52 1.82zM18.703.664l.635.643c.876.887.884 2.318.016 3.196L8.428 15.561l-3.764 1.084a.901.901 0 0 1-1.11-.623.915.915 0 0 1-.002-.506l1.095-3.84L15.544.647a2.215 2.215 0 0 1 3.159.016zM7.184 1.817c.496 0 .898.407.898.909a.903.903 0 0 1-.898.909H3.592c-.992 0-1.796.814-1.796 1.817v10.906c0 1.004.804 1.818 1.796 1.818h10.776c.992 0 1.797-.814 1.797-1.818v-3.635c0-.502.402-.909.898-.909s.898.407.898.91v3.634c0 2.008-1.609 3.636-3.593 3.636H3.592C1.608 19.994 0 18.366 0 16.358V5.452c0-2.007 1.608-3.635 3.592-3.635h3.592z' />
+        </svg>
+    </div>
+
+    <div class="contacts">
+        <div class="search__container">
+            <input class="search__input" type="text" placeholder=" Search">
+            <svg class="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="25px" height="25px">
+                <path
+                    d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z" />
+            </svg>
+        </div>
+        <div class="contacts-container">
+            <div class="contact">
+                <div class="contact-infos">
+                    <img src="https://hips.hearstapps.com/hmg-prod/images/daniel-craig-1632945069.jpg?crop=0.757xw:1.00xh;0.116xw,0&resize=1200:*"
+                        alt="">
+                    <h1>Daniel Craig</h1>
+                </div>
+                <div class="disponibilty">
+                    <h2>1 day ago</h2>
+                </div>
+            </div>
+            <div class="contact">
+                <div class="contact-infos">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
+                        alt="">
+                    <h1>Anne Marie</h1>
+                </div>
+                <div class="disponibilty">
+                    <h2>20 min ago</h2>
+                </div>
+            </div>
+            <div class="contact">
+                <div class="contact-infos">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80"
+                        alt="">
+                    <h1>dua lipa</h1>
+                </div>
+                <div class="disponibilty">
+                    <h2>50 min ago</h2>
+                </div>
+            </div>
+            <div class="contact">
+                <div class="contact-infos">
+                    <img src="https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
+                        alt="">
+                    <h1>Charlie puth</h1>
+                </div>
+                <div class="disponibilty">
+                    <h2>4 hours ago</h2>
+                </div>
+            </div>
+            <div class="contact">
+                <div class="contact-infos">
+                    <img src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80"
+                        alt="">
+                    <h1>tom hardy</h1>
+                </div>
+                <div class="disponibilty">
+                    <h2>33 min ago</h2>
+                </div>
+            </div>
+        </div>
+        <div class="contact-btn">
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="15px" height="15px">
+                    <path
+                        d="M 22.828125 3 C 22.316375 3 21.804562 3.1954375 21.414062 3.5859375 L 19 6 L 24 11 L 26.414062 8.5859375 C 27.195062 7.8049375 27.195062 6.5388125 26.414062 5.7578125 L 24.242188 3.5859375 C 23.851688 3.1954375 23.339875 3 22.828125 3 z M 17 8 L 5.2597656 19.740234 C 5.2597656 19.740234 6.1775313 19.658 6.5195312 20 C 6.8615312 20.342 6.58 22.58 7 23 C 7.42 23.42 9.6438906 23.124359 9.9628906 23.443359 C 10.281891 23.762359 10.259766 24.740234 10.259766 24.740234 L 22 13 L 17 8 z M 4 23 L 3.0566406 25.671875 A 1 1 0 0 0 3 26 A 1 1 0 0 0 4 27 A 1 1 0 0 0 4.328125 26.943359 A 1 1 0 0 0 4.3378906 26.939453 L 4.3632812 26.931641 A 1 1 0 0 0 4.3691406 26.927734 L 7 26 L 5.5 24.5 L 4 23 z" />
+                </svg>
+                compose</button>
+        </div>
     </div>
 </div>

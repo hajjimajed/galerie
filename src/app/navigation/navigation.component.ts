@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { formatDate } from '@angular/common';
+import { Router, NavigationEnd } from '@angular/router';
 
 interface UserDataResponse {
   message: string;
@@ -23,15 +24,19 @@ export class NavigationComponent implements OnInit {
 
   isShrunk: boolean = false;
 
+  hideRightBar: boolean = true;
+
   constructor(
     private authService: AuthService,
     private http: HttpClient,
+    private router: Router
   ) {
     this.currentDate = this.getFormattedDate();
   }
 
   ngOnInit() {
     this.getUserData();
+    this.currentRoute();
   }
 
   private getFormattedDate(): string {
@@ -90,6 +95,18 @@ export class NavigationComponent implements OnInit {
           console.log('error retrieving user data: ', error);
         }
       )
+  }
+
+  currentRoute() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/') {
+          this.hideRightBar = false;
+        } else {
+          this.hideRightBar = true;
+        }
+      }
+    });
   }
 
   @HostListener('window:scroll', [])
